@@ -40,3 +40,16 @@ SQL pour la database
 
 Utilisation de cookie pour se souvenir du joueur.
 
+
+Maquette idées:
+
+Input pour proposer un personnage affiche les guess possibles en fonction des lettres tapées
+
+
+Bouton pour les menus :
+	image en lien avec le jeu deviant flou au passage de la souris et affiche le nom du jeu
+wallpaper qui change chaque moi ?????????????
+
+guess the zizi :
+
+	deux flèche verte et rouge qui clignote si c plu o ou plu ba 
