@@ -1,0 +1,129 @@
+body{
+    margin:0;
+    overflow:hidden;
+    height:100%;
+    width:100%;
+}
+
+p{
+    margin:0;
+}
+
+#background{
+    width:100%;
+    z-index:1;
+    position:absolute;
+}
+
+#logo{
+    position:absolute;
+    display:block;
+    z-index:2;
+    width:25%;
+    left:50%;
+    top:5%;
+    transform:translateX(-50%);
+    transition:transform 0.5s;
+}
+
+#logo img{
+    width:100%;
+
+}
+
+#logo:hover{
+    transform:translateX(-50%) scale(1.1);
+    transition:transform 0.5s;
+}
+.gamemode{
+    z-index:2;
+    width:20%;
+    position:absolute;
+    transition:transform 0.5s;
+    transform:translate(-50%,-50%);
+    box-shadow: 3px 2px 15px black;
+
+}
+
+
+#classic, #bounty{
+    top:45%;
+}
+
+#quote, #splash{
+    top:75%;
+}
+
+#classic, #quote{
+    left:25%;
+}
+
+#bounty, #splash{
+    left:75%;
+}
+
+.namegame{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    z-index:3;
+    font-family:"Friz Quadrata";
+    -webkit-text-stroke: 0.5px #f1402b;
+    color: black;
+    font-size: 180%;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    opacity: 0;
+    transition:opacity 0.5s;
+}
+
+.gamemode:hover img{
+    filter: blur(2.5px) brightness(0.6);
+    transition:filter 0.5s;
+}
+
+.gamemode:hover p{
+    opacity:1;
+    transition :opacity 0.5s;
+}
+.gamemode:hover{
+    transform:translate(-50%,-50%) scale(1.05);
+    transition:transform 0.5s;
+}
+
+.gamemode img{
+    border-radius:10px;
+    width:100%;
+    transition:filter 0.5s;
+}
+
+#resaux{
+    position:absolute;
+    width: 15%;
+    z-index:2;
+    bottom:10%;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+#twitter, #infos{
+    display:block;
+    width:30%;
+    margin:10%;
+    float:left;
+}
+#resaux img{
+   width:100%;
+}
+#copyright{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    display:block;
+    font-family:"Froz Quadrata";
+    bottom:0;
+    font-size:70%;
+    color:white;
+}
