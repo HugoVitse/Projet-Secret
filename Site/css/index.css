@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'ubuntu';
+    src: url(Ubuntu-Regular.ttf) format('woff2');
+}
+
 body{
     margin:0;
     overflow:hidden;
@@ -68,8 +73,8 @@ p{
     left:50%;
     transform:translate(-50%,-50%);
     z-index:3;
-    font-family:"Friz Quadrata";
-    -webkit-text-stroke: 0.5px #f1402b;
+    font-family:"ubuntu";
+    -webkit-text-stroke: 0.3px #f1402b;
     color: black;
     font-size: 180%;
     width: 100%;
