@@ -44,8 +44,8 @@ p{
 
 
 #indications{
-    width:25%;
-    height:10%;
+    width:300px;
+    height:54px;
     background-color: rgb(38, 38, 38);
     position:absolute;
     left:50%;
@@ -54,7 +54,7 @@ p{
     top:30%;
     border:2px solid rgb(163, 142, 22);
     border-radius:5px;
-    font-size:25px;
+    font-size:15px;
     text-align:center;
     font-family:"ubuntu";
     color:#fff;
@@ -82,7 +82,7 @@ p{
     transform:translateY(-50%);
 }
 #searchbar{
-    height:10%;
+    height:74px;
     position:absolute;
     left:50%;
     transform:translate(-50%,-50%);
@@ -163,4 +163,51 @@ p{
     width: 100%;
     background-color:#383838;
     display:none;
+}
+
+.tryguess{
+    position: relative;
+    width: 900px;
+    height: 100px;
+    z-index: 2;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.essai{
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+
+#guess{
+    top:60%;
+    position:relative;
+}
+
+#forhead{
+    position: relative;
+    width: 900px;
+    height: 60px;
+    z-index: 2;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.entete{
+    width:100px;
+    float:left;
+    font-family:ubuntu;
+    color:white;
+    text-align:center;
+}
+
+.essai>p{
+    display: block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    color:white;
+    font-family:ubuntu;
 }

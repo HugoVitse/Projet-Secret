@@ -5,6 +5,7 @@ var newid = " ";
 var newdisplay = "";
 var guess="";
 var guessid = -1;
+var divguess = document.getElementById("guess");
 
 inp.addEventListener("keydown", display);
 function makeAguess(guessid){
@@ -14,7 +15,31 @@ function makeAguess(guessid){
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
         // Typical action to be performed when the document is ready:
+            var tmp = xhttp.responseText.split(":");
             console.log(xhttp.responseText);
+            console.log(tmp);
+            var newDiv = document.createElement("div");
+            newDiv.classList.add("tryguess");
+            let newC = document.createElement("div");
+            newC.classList.add("essai");
+            let newContent = document.createTextNode(tmp[19]);
+            newC.appendChild(newContent);
+            newDiv.appendChild(newC);
+            for(var i=0; i< 8;i++){
+                let newC = document.createElement("div");
+                if(tmp[2*i+4] == 1) newC.setAttribute("style","background-color:green");
+                if(tmp[2*i+4] == 2) newC.setAttribute("style","background-color:orange");
+                if(tmp[2*i+4] == 3) newC.setAttribute("style","background-color:red");
+                newC.classList.add("essai");
+                let newP = document.createElement("p");
+                let newContent = document.createTextNode(tmp[2*i+3]);
+                newP.appendChild(newContent);
+                newC.appendChild(newP);
+                newDiv.appendChild(newC);
+            }
+            divguess.appendChild(newDiv);
+
+
         }
     };
     xhttp.open("POST", "guess.php", true);
@@ -48,7 +73,7 @@ function display(e){
     }
     else{
         setTimeout( ()=>{
-            text = inp.value;
+            text = inp.value.toLowerCase();
             let firstletter=0;
             if(text.length == 0) firstletter = 0;
             else firstletter = (text[0]).charCodeAt();

@@ -61,6 +61,21 @@
                 mysqli_close($connexion);
             ?>
         </div>
+
+        <div id="guess">
+           <div id="forhead">
+                <p class="entete">Personnage</p>
+                <p class="entete">Nom</p>
+                <p class="entete">Fruit du Démon</p>
+                <p class="entete">Haki</p>
+                <p class="entete">Genre</p>
+                <p class="entete">Occupation</p>
+                <p class="entete">Espèce</p>
+                <p class="entete">Océan d'origine</p>
+                <p class="entete">Style de combat</p>
+           </div>
+        </div>
+
         <div id="resaux">
             <a id="twitter">
                 <img src="images/twitter.png">
