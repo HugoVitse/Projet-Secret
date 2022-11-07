@@ -20,7 +20,7 @@
             echo $val.":";
             if($ligne2[$cle] == $val) echo "1:";
             else{
-                if(strpos(($ligne2[$cle]),$val) OR strpos($val,($ligne2[$cle]))) echo "2:";
+                if(strpos(($ligne2[$cle]),$val) !== false OR strpos($val,($ligne2[$cle])) !== false) echo "2:";
                 else echo "3:";
             }
         }

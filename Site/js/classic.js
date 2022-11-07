@@ -5,10 +5,15 @@ var newid = " ";
 var newdisplay = "";
 var guess="";
 var guessid = -1;
-var divguess = document.getElementById("guess");
+var divguess = document.getElementById("guesslist");
+var listtry = [];
+var count = 0;
+var isstarted = false;
 
 inp.addEventListener("keydown", display);
 function makeAguess(guessid){
+    listtry[count] = guess;
+    count++;
     console.log(guess);
     var data ="id="+guessid;
     var xhttp = new XMLHttpRequest();
@@ -19,25 +24,30 @@ function makeAguess(guessid){
             console.log(xhttp.responseText);
             console.log(tmp);
             var newDiv = document.createElement("div");
+            divguess.prepend(newDiv);
             newDiv.classList.add("tryguess");
             let newC = document.createElement("div");
             newC.classList.add("essai");
-            let newContent = document.createTextNode(tmp[19]);
-            newC.appendChild(newContent);
+            newC.setAttribute("style","background-image: url(images/"+tmp[19]+");");
             newDiv.appendChild(newC);
             for(var i=0; i< 8;i++){
                 let newC = document.createElement("div");
                 if(tmp[2*i+4] == 1) newC.setAttribute("style","background-color:green");
                 if(tmp[2*i+4] == 2) newC.setAttribute("style","background-color:orange");
                 if(tmp[2*i+4] == 3) newC.setAttribute("style","background-color:red");
-                newC.classList.add("essai");
+                newC.classList.add("essaipreflip");
                 let newP = document.createElement("p");
                 let newContent = document.createTextNode(tmp[2*i+3]);
                 newP.appendChild(newContent);
                 newC.appendChild(newP);
                 newDiv.appendChild(newC);
+                setTimeout(()=>{
+                    newC.classList.remove("essaipreflip");
+                    newC.classList.add("essai");
+                },700*i);
+                
             }
-            divguess.appendChild(newDiv);
+            
 
 
         }
@@ -49,6 +59,14 @@ function makeAguess(guessid){
 }
 function display(e){
     if(e.code == "Enter"){
+        if(isstarted == false){
+            isstarted = true;
+            document.querySelector("#forhead").classList.add("foreheadopa");
+            document.querySelector("#forhead").classList.remove("foreheade");
+            document.querySelector("hr").classList.add("hrrOpa");
+            document.querySelector("hr").classList.remove("hrr");
+
+        }
         text = inp.value;
         let firstletter=0;
         if(text.length == 0) firstletter = 0;
@@ -64,6 +82,8 @@ function display(e){
                     inp.value="";
                     newdisplay.classList.remove("alphabeticalopa");
                     newdisplay.classList.add("alphabetical");
+                    (children[i]).classList.remove("persobox");
+                    (children[i]).classList.add("persoboxtr");
                     makeAguess(guessid);
                     break;
                 }
@@ -86,10 +106,14 @@ function display(e){
             else{
                 newid = "#letter" + (firstletter-97);
                 newdisplay = document.querySelector(newid);
-                var children = newdisplay.childNodes
+                var children = newdisplay.childNodes;
                 for(var i=0; i< children.length -1;i++){
-                    (children[i]).classList.add("persobox");
-                    (children[i]).classList.remove("persoboxtr");
+                    console.log(listtry.includes((children[i]).getAttribute("id")));
+                    if(   listtry.includes((children[i]).getAttribute("id")) != true) {
+                        (children[i]).classList.add("persobox");
+                        (children[i]).classList.remove("persoboxtr");
+                    }
+                  
                 }
                 newdisplay.classList.remove("alphabetical");
                 newdisplay.classList.add("alphabeticalopa");

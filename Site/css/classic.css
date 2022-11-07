@@ -5,7 +5,6 @@
 
 body{
     margin:0;
-    overflow:hidden;
     height:100%;
     width:100%;
 }
@@ -17,7 +16,7 @@ p{
 #background{
     width:100%;
     z-index:1;
-    position:absolute;
+    position:fixed;
 }
 
 #logo{
@@ -97,7 +96,9 @@ p{
     float:left;
 }
 
-
+.essai > img{
+    width:100%;
+}
 
 
 
@@ -109,7 +110,6 @@ p{
     position:absolute;
     width: 15%;
     z-index:2;
-    bottom:10%;
     left:50%;
     transform:translateX(-50%);
 }
@@ -167,7 +167,7 @@ p{
 
 .tryguess{
     position: relative;
-    width: 900px;
+    width: 846px;
     height: 100px;
     z-index: 2;
     left: 50%;
@@ -175,31 +175,86 @@ p{
 }
 
 .essai{
-    width: 100px;
-    height: 100px;
+    width: 88px;
+    height: 88px;
     float: left;
+    margin: 5px 2px;
+    border: 1px solid white;
+    box-shadow: inset 0 0 6px #000;
+    cursor: default;
+    background-size: cover;
+    transform: rotate3d(0,1,0,0deg);
+    transition: transform 0.5s,opacity 0.5s;
+    opacity:1;
 }
+
+.essaipreflip{
+    opacity:0;
+    width: 88px;
+    height: 88px;
+    float: left;
+    margin: 5px 2px;
+    border: 1px solid white;
+    box-shadow: inset 0 0 6px #000;
+    cursor: default;
+    background-size: cover;
+    transform: rotate3d(0,1,0,120deg);
+    transition: transform 0.5s,opacity 0.5s;
+}
+
+
 
 #guess{
     top:60%;
     position:relative;
+    padding-bottom:100px;
 }
 
-#forhead{
+.foreheade{
     position: relative;
-    width: 900px;
+    width: 846px;
     height: 60px;
     z-index: 2;
     left: 50%;
     transform: translateX(-50%);
+    opacity:0;
+}
+.foreheadopa{
+    position: relative;
+    width: 846px;
+    height: 60px;
+    z-index: 2;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity:1;
 }
 
 .entete{
-    width:100px;
-    float:left;
-    font-family:ubuntu;
-    color:white;
-    text-align:center;
+    width: 94px;
+    float: left;
+    font-family: ubuntu;
+    color: white;
+    text-align: center;
+    top: 100%;
+    position: relative;
+    transform: translateY(-100%);
+}
+
+
+.hrr{
+    position: relative;
+    z-index: 3;
+    color: white;
+    width:846px;
+    opacity:0;
+}
+
+.hrrOpa{
+    position: relative;
+    z-index: 3;
+    color: white;
+    width:846px;
+    opacity:1;
 }
 
 .essai>p{

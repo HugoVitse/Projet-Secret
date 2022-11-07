@@ -63,7 +63,7 @@
         </div>
 
         <div id="guess">
-           <div id="forhead">
+           <div class ="foreheade" id="forhead">
                 <p class="entete">Personnage</p>
                 <p class="entete">Nom</p>
                 <p class="entete">Fruit du Démon</p>
@@ -74,18 +74,22 @@
                 <p class="entete">Océan d'origine</p>
                 <p class="entete">Style de combat</p>
            </div>
-        </div>
-
-        <div id="resaux">
-            <a id="twitter">
-                <img src="images/twitter.png">
-            </a>
-            <div id="infos">
-                <img src="images/infos.png">
-
+           <hr class="hrr">
+           <div id="guesslist">
             </div>
-            <p id="copyright"> Onedle - 2022 </p>
+            <div id="resaux">
+                <a id="twitter">
+                    <img src="images/twitter.png">
+                </a>
+                <div id="infos">
+                    <img src="images/infos.png">
+
+                </div>
+                <p id="copyright"> Onedle - 2022 </p>
+            </div>
         </div>
+
+        
         <script src="js/classic.js"></script>
     </body>
 
