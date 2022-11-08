@@ -41,9 +41,27 @@
                                 $actrow = $persos[$j];
                                 $actname = $actrow['nom'];
                                 $actid = $actrow['id'];
+                                $actimg = "images/".$actrow['image'];
                                 if((strtolower($actname))[0] == chr($i+97)){
                                     echo "<div class='persobox' id='$actname'>
+                                            <script> document.getElementById('$actname').addEventListener('click', ()=>{
+                                                if(isstarted == false){
+                                                    isstarted = true;
+                                                    document.querySelector('#forhead').classList.add('foreheadopa');
+                                                    document.querySelector('#forhead').classList.remove('foreheade');
+                                                    document.querySelector('hr').classList.add('hrrOpa');
+                                                    document.querySelector('hr').classList.remove('hrr');
+                                        
+                                                }
+                                                guess = '$actname';
+                                                console.log(guess);
+                                                guessid = ((document.getElementById(guess).childNodes)[3]).getAttribute('id');
+                                                newdisplay.classList.remove('alphabeticalopa');
+                                                newdisplay.classList.add('alphabetical');
+                                                makeAguess(guessid);
+                                            });</script>
                                             <div id='$actid' style='display:none'></div>
+                                            <img src='$actimg'>
                                             <p> $actname </p>
 
 

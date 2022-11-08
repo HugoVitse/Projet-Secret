@@ -11,7 +11,8 @@ var count = 0;
 var isstarted = false;
 
 inp.addEventListener("keydown", display);
-function makeAguess(guessid){
+function makeAguess(){
+    console.log(guessid);
     listtry[count] = guess;
     count++;
     console.log(guess);
@@ -57,28 +58,31 @@ function makeAguess(guessid){
     xhttp.send(data);
 
 }
+
+
 function display(e){
     if(e.code == "Enter"){
-        if(isstarted == false){
-            isstarted = true;
-            document.querySelector("#forhead").classList.add("foreheadopa");
-            document.querySelector("#forhead").classList.remove("foreheade");
-            document.querySelector("hr").classList.add("hrrOpa");
-            document.querySelector("hr").classList.remove("hrr");
-
-        }
         text = inp.value;
         let firstletter=0;
         if(text.length == 0) firstletter = 0;
         else firstletter = (text[0]).charCodeAt();
         if(firstletter!=0){
+            if(isstarted == false){
+                isstarted = true;
+                document.querySelector("#forhead").classList.add("foreheadopa");
+                document.querySelector("#forhead").classList.remove("foreheade");
+                document.querySelector("hr").classList.add("hrrOpa");
+                document.querySelector("hr").classList.remove("hrr");
+    
+            }
             newid = "#letter" + (firstletter-97);
             newdisplay = document.querySelector(newid);
+
             var children = newdisplay.childNodes;
             for(var i=0; i< children.length -1;i++){
                 if(children[i].classList.contains("persobox")) {
                     guess = children[i].getAttribute("id");
-                    guessid = ((document.getElementById(guess).childNodes)[1]).getAttribute("id");
+                    guessid = ((document.getElementById(guess).childNodes)[3]).getAttribute("id");
                     inp.value="";
                     newdisplay.classList.remove("alphabeticalopa");
                     newdisplay.classList.add("alphabetical");

@@ -85,7 +85,7 @@ p{
     position:absolute;
     left:50%;
     transform:translate(-50%,-50%);
-    z-index:2;
+    z-index:3;
     top:50%;
     border-radius:5px;
 }
@@ -150,12 +150,27 @@ p{
     background-color:#383838;
     top: 74px;
     opacity:1;
+    z-index:5;
 }
 
 .persobox{
     height: 44px;
     width: 100%;
     background-color:#383838;
+    font-family:ubuntu;
+    cursor:pointer;
+}
+.persobox>img{
+    height: 36px;
+    margin: 4px;
+}
+
+.persobox>p{
+    display: block;
+    top: 50%;
+    position: relative;
+    transform: translate(3%,-50%);
+    color:white;
 }
 
 .persoboxtr{
