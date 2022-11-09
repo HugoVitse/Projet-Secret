@@ -9,12 +9,47 @@ var divguess = document.getElementById("guesslist");
 var listtry = [];
 var count = 0;
 var isstarted = false;
+var actualchild = 0;
+var refreshing = false;
 
+if(typeof(tabgues)!="undefined"){
+    if(tabgues.length >1){
+        refreshing=true;
+        for(var i=0; i< tabgues.length-1 ;i++){
+            console.log(tabgues[i]);
+            guessid=tabgues[i]
+            makeAguess();
+
+        }
+        setTimeout(()=>{
+            refreshing=false;
+        },300);
+        
+    }
+}
 inp.addEventListener("keydown", display);
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+}
 function makeAguess(){
     console.log(guessid);
-    listtry[count] = guess;
-    count++;
+    listtry[count] = guessid;
+    if(refreshing==false){
+        if(document.cookie.length==0) document.cookie = "guesses="+guessid+"a;expires="+(((Date.now())-(Date.now())%(24*60*60*1000))+24*60*60*1000);
+        else document.cookie = "guesses="+getCookie("guesses")+guessid+"a;expires="+(((Date.now())-(Date.now())%(24*60*60*1000))+24*60*60*1000);
+    }
     console.log(guess);
     var data ="id="+guessid;
     var xhttp = new XMLHttpRequest();
@@ -36,16 +71,21 @@ function makeAguess(){
                 if(tmp[2*i+4] == 1) newC.setAttribute("style","background-color:green");
                 if(tmp[2*i+4] == 2) newC.setAttribute("style","background-color:orange");
                 if(tmp[2*i+4] == 3) newC.setAttribute("style","background-color:red");
-                newC.classList.add("essaipreflip");
+                if(refreshing == false)newC.classList.add("essaipreflip");
                 let newP = document.createElement("p");
                 let newContent = document.createTextNode(tmp[2*i+3]);
                 newP.appendChild(newContent);
                 newC.appendChild(newP);
                 newDiv.appendChild(newC);
-                setTimeout(()=>{
-                    newC.classList.remove("essaipreflip");
+                if(refreshing == false){
+                    setTimeout(()=>{
+                        newC.classList.remove("essaipreflip");
+                        newC.classList.add("essai");
+                    },700*i);
+                }
+                else{
                     newC.classList.add("essai");
-                },700*i);
+                }
                 
             }
             
@@ -61,6 +101,35 @@ function makeAguess(){
 
 
 function display(e){
+    if(e.code=="ArrowDown"){
+        listchildr = newdisplay.childNodes;
+        let k = 1;
+        if(actualchild < listchildr.length-2){
+            ((listchildr[actualchild].childNodes)[7]).classList.remove("paraselect");
+            ((listchildr[actualchild].childNodes)[7]).classList.add("paraguess");
+        }
+        while(listchildr[actualchild+k].classList.contains("persoboxtr")){
+            if(k+1 < listchildr.length) k++;
+        }
+        actualchild+=k;
+        ((listchildr[actualchild].childNodes)[7]).classList.add("paraselect");
+        ((listchildr[actualchild].childNodes)[7]).classList.remove("paraguess");
+    }
+    if(e.code=="ArrowUp"){
+        listchildr = newdisplay.childNodes;
+        let k = 1;
+        if(actualchild > 0){
+            ((listchildr[actualchild].childNodes)[7]).classList.remove("paraselect");
+            ((listchildr[actualchild].childNodes)[7]).classList.add("paraguess");
+        }
+        while(listchildr[actualchild-k].classList.contains("persoboxtr")){
+            if(k-1 > 0) k--;
+        }
+        actualchild-=k;
+        ((listchildr[actualchild].childNodes)[7]).classList.add("paraselect");
+        ((listchildr[actualchild].childNodes)[7]).classList.remove("paraguess");
+    }
+    
     if(e.code == "Enter"){
         text = inp.value;
         let firstletter=0;
@@ -79,20 +148,37 @@ function display(e){
             newdisplay = document.querySelector(newid);
 
             var children = newdisplay.childNodes;
-            for(var i=0; i< children.length -1;i++){
-                if(children[i].classList.contains("persobox")) {
-                    guess = children[i].getAttribute("id");
-                    guessid = ((document.getElementById(guess).childNodes)[3]).getAttribute("id");
-                    inp.value="";
-                    newdisplay.classList.remove("alphabeticalopa");
-                    newdisplay.classList.add("alphabetical");
-                    (children[i]).classList.remove("persobox");
-                    (children[i]).classList.add("persoboxtr");
-                    makeAguess(guessid);
-                    break;
+            if(actualchild==0){
+                for(var i=0; i< children.length -1;i++){
+               
+                    if(children[i].classList.contains("persobox")) {
+                        guess = children[i].getAttribute("id");
+                        guessid = ((document.getElementById(guess).childNodes)[3]).getAttribute("id");
+                        inp.value="";
+                        newdisplay.classList.remove("alphabeticalopa");
+                        newdisplay.classList.add("alphabetical");
+                        actualchild=0;
+                        (children[i]).classList.remove("persobox");
+                        (children[i]).classList.add("persoboxtr");
+                        makeAguess(guessid);
+                        break;
+                    }
                 }
-                
             }
+            else{
+                guess = children[actualchild].getAttribute("id");
+                guessid = ((document.getElementById(guess).childNodes)[3]).getAttribute("id");
+                inp.value="";
+                newdisplay.classList.remove("alphabeticalopa");
+                newdisplay.classList.add("alphabetical");
+                actualchild=0;
+                (children[actualchild]).classList.remove("persobox");
+                (children[actualchild]).classList.add("persoboxtr");
+                makeAguess(guessid);
+            }
+                
+                
+            
         }
     }
     else{
@@ -105,6 +191,7 @@ function display(e){
                 if(newdisplay.length !=0){
                     newdisplay.classList.remove("alphabeticalopa");
                     newdisplay.classList.add("alphabetical");
+                    actualchild=0;
                 }
             }
             else{
@@ -112,20 +199,34 @@ function display(e){
                 newdisplay = document.querySelector(newid);
                 var children = newdisplay.childNodes;
                 for(var i=0; i< children.length -1;i++){
-                    console.log(listtry.includes((children[i]).getAttribute("id")));
-                    if(   listtry.includes((children[i]).getAttribute("id")) != true) {
+                    console.log(listtry);
+                    if(   listtry.includes((((children[i]).childNodes)[3]).getAttribute("id")) != true) {
                         (children[i]).classList.add("persobox");
                         (children[i]).classList.remove("persoboxtr");
+                    }
+                    else{
+                        (children[i]).classList.remove("persobox");
+                        (children[i]).classList.add("persoboxtr");
                     }
                   
                 }
                 newdisplay.classList.remove("alphabetical");
                 newdisplay.classList.add("alphabeticalopa");
                 for(var i=0; i< children.length -1;i++){
-                    if(children[i].getAttribute("id").toLowerCase().indexOf(text) != 0){
+                    var alname = children[i].getAttribute("id").split(" ");
+                    console.log(alname);
+                    var testo = false;
+                    for(var j=0; j< alname.length-1;j++){ 
+                        if((alname[j]).toLowerCase().indexOf(text) == 0){
+                            testo = true;
+                        }
+                    }
+                    console.log(testo);
+                    if(testo == false){
                         (children[i]).classList.remove("persobox");
                         (children[i]).classList.add("persoboxtr");
                     }
+                    
                 }
             }
         },10);

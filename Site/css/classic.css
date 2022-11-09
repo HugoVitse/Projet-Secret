@@ -151,6 +151,7 @@ p{
     top: 74px;
     opacity:1;
     z-index:5;
+    border-radius: 0 0 10px 10px;
 }
 
 .persobox{
@@ -159,18 +160,30 @@ p{
     background-color:#383838;
     font-family:ubuntu;
     cursor:pointer;
+    border-radius: 0 0 10px 10px;
+}
+
+.paraselect{
+    display: block;
+    top: 50%;
+    position: relative;
+    transform: translate(3%,-50%);
+    color:red;
+    transition : color 0.3s;
 }
 .persobox>img{
+    border-radius:4px;
     height: 36px;
     margin: 4px;
 }
 
-.persobox>p{
+.paraguess{
     display: block;
     top: 50%;
     position: relative;
     transform: translate(3%,-50%);
     color:white;
+    transition : color 0.3s;
 }
 
 .persoboxtr{
@@ -273,6 +286,7 @@ p{
 }
 
 .essai>p{
+    font-size:70%;
     display: block;
     position: relative;
     top: 50%;

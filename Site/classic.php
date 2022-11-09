@@ -42,30 +42,33 @@
                                 $actname = $actrow['nom'];
                                 $actid = $actrow['id'];
                                 $actimg = "images/".$actrow['image'];
-                                if((strtolower($actname))[0] == chr($i+97)){
-                                    echo "<div class='persobox' id='$actname'>
-                                            <script> document.getElementById('$actname').addEventListener('click', ()=>{
-                                                if(isstarted == false){
-                                                    isstarted = true;
-                                                    document.querySelector('#forhead').classList.add('foreheadopa');
-                                                    document.querySelector('#forhead').classList.remove('foreheade');
-                                                    document.querySelector('hr').classList.add('hrrOpa');
-                                                    document.querySelector('hr').classList.remove('hrr');
-                                        
-                                                }
-                                                guess = '$actname';
-                                                console.log(guess);
-                                                guessid = ((document.getElementById(guess).childNodes)[3]).getAttribute('id');
-                                                newdisplay.classList.remove('alphabeticalopa');
-                                                newdisplay.classList.add('alphabetical');
-                                                makeAguess(guessid);
-                                            });</script>
-                                            <div id='$actid' style='display:none'></div>
-                                            <img src='$actimg'>
-                                            <p> $actname </p>
+                                $allnames = explode(" ",$actname);
+                                foreach($allnames as $cle=>$val){
+                                    if((strtolower($val))[0] == chr($i+97)){
+                                        echo "<div class='persobox' id='$actname $cle'>
+                                                <script> document.getElementById('$actname $cle').addEventListener('click', ()=>{
+                                                    if(isstarted == false){
+                                                        isstarted = true;
+                                                        document.querySelector('#forhead').classList.add('foreheadopa');
+                                                        document.querySelector('#forhead').classList.remove('foreheade');
+                                                        document.querySelector('hr').classList.add('hrrOpa');
+                                                        document.querySelector('hr').classList.remove('hrr');
+                                            
+                                                    }
+                                                    guess = '$actname $cle';
+                                                    console.log(guess);
+                                                    guessid = ((document.getElementById(guess).childNodes)[3]).getAttribute('id');
+                                                    newdisplay.classList.remove('alphabeticalopa');
+                                                    newdisplay.classList.add('alphabetical');
+                                                    makeAguess(guessid);
+                                                });</script>
+                                                <div id='$actid' style='display:none'></div>
+                                                <img src='$actimg'>
+                                                <p class='paraguess'> $actname </p>
 
 
-                                          </div>";
+                                            </div>";
+                                    }
                                 }
                             }
 
@@ -106,7 +109,16 @@
                 <p id="copyright"> Onedle - 2022 </p>
             </div>
         </div>
-
+        <?php
+            if(isset($_COOKIE["guesses"])){
+                $tab = explode("a",$_COOKIE["guesses"]);
+                $tabj = json_encode($tab);
+                echo "<script>
+                        var tabgues = $tabj;
+                       </script>";
+                
+            }
+        ?>
         
         <script src="js/classic.js"></script>
     </body>

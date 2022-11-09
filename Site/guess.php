@@ -18,11 +18,24 @@
         $ligne2 = mysqli_fetch_assoc($resultat2);
         foreach($ligne as $cle => $val){
             echo $val.":";
-            if($ligne2[$cle] == $val) echo "1:";
-            else{
-                if(strpos(($ligne2[$cle]),$val) !== false OR strpos($val,($ligne2[$cle])) !== false) echo "2:";
-                else echo "3:";
+            if($cle == "fdd"){
+                if($val == $ligne2["fdd"]) echo"1:";
+                else{
+                   if($val!="Aucun" && $ligne2["fdd"] != "Aucun") echo"2:"; 
+                   else echo"3:";
+                }
+                
+
             }
+            else{
+               if($ligne2[$cle] == $val) echo "1:";
+                else{
+                    if(strpos(($ligne2[$cle]),$val) !== false OR strpos($val,($ligne2[$cle])) !== false) echo "2:";
+                    else echo "3:";
+                } 
+            }
+            
+            
         }
         
         
