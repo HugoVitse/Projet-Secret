@@ -28,7 +28,7 @@
         <div id="indications">
             <p>Devinez le personnage du jour !</p>
         </div>
-        <div id="searchbar">
+        <div class="searchbarOK" id="searchbar">
             <img src="images/searchbar.png">
             <input id="saisie" type="text">
             <img id ="button" src="images/button.png">
@@ -98,6 +98,19 @@
            <hr class="hrr">
            <div id="guesslist">
             </div>
+            <div class="sucessd" id="sucess">
+                <p id="msgfel"> Bien joué ! </p>
+                <img src="images/luffy.png" id="imgfel">
+                <p id="youguess"> Vous avez trouvé : </p>
+                <p id="nameguess">Monkey D. Luffy </p>
+                <p id="nextin"> Prochain perso dans </p>
+                <p id="timer"></p>
+                <a id="lobby" href="bounty.php">
+                    <img src="images/bounty.png">
+                    <p id="nextgame"> Bounty </p>
+                </a>
+
+            </div>
             <div id="resaux">
                 <a id="twitter">
                     <img src="images/twitter.png">
@@ -109,6 +122,7 @@
                 <p id="copyright"> Onedle - 2022 </p>
             </div>
         </div>
+        
         <?php
             if(isset($_COOKIE["guesses"])){
                 $tab = explode("a",$_COOKIE["guesses"]);

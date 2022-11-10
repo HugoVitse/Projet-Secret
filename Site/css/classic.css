@@ -80,7 +80,7 @@ p{
     top:50%;
     transform:translateY(-50%);
 }
-#searchbar{
+.searchbarOK{
     height:74px;
     position:absolute;
     left:50%;
@@ -88,6 +88,18 @@ p{
     z-index:3;
     top:50%;
     border-radius:5px;
+}
+
+.searchbarPAS{
+    height:74px;
+    position:absolute;
+    left:50%;
+    transform:translate(-50%,-50%);
+    z-index:3;
+    top:50%;
+    border-radius:5px;
+    display:none;
+
 }
 
 
@@ -294,4 +306,102 @@ p{
     text-align: center;
     color:white;
     font-family:ubuntu;
+}
+
+.sucessd{
+    display:none;
+    position:relative;
+    width:23%;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:2;
+    background:linear-gradient(#16793d,#1e2328);
+    border:2px solid green;
+    margin-top: 100px;
+    border-radius: 5px;
+}
+
+.sucessap{
+    position:relative;
+    width:23%;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:2;
+    background:linear-gradient(#16793d,#1e2328);
+    border:2px solid green;
+    margin-top: 100px;
+    border-radius: 5px;
+}
+#nextgame{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    color:black;
+    font-size:150%;
+    font-weight:ubuntu;
+}
+#sucess p{
+    font-family: ubuntu;
+}
+
+#msgfel{
+    margin:10px;
+    color:white;
+    text-align:center;
+}
+#imgfel{
+    width: 25%;
+    float: left;
+    margin: 10px;
+    border-radius:6px;
+}
+
+#youguess{
+    display:block;
+    text-align: center;
+    float:left;
+    margin: 10px;
+    color:white;
+}
+
+#nameguess{
+    font-size:150%;
+    text-align: center;
+    font-weight:bold;
+    color:white;
+}
+
+#nextin{
+    clear: left;
+    text-align: center;
+    color:white;
+    margin-top: 30px;
+}
+
+#timer{
+    font-size:150%;
+    text-align: center;
+    margin-top: 30px;
+    color:white;
+
+}
+
+#lobby img{
+    width:100%;
+    transition:filter 0.5s;
+}
+
+#lobby{
+    width: 65%;
+    display: block;
+    left: 50%;
+    position: relative;
+    transform: translateX(-50%);
+    margin: 10px;
+}
+
+#lobby:hover img{
+    filter:blur(4px);
+    transition:filter 0.5s;
 }
