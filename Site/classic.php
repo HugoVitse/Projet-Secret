@@ -55,6 +55,7 @@
                                                         document.querySelector('hr').classList.remove('hrr');
                                             
                                                     }
+                                                    inp.value='';
                                                     guess = '$actname $cle';
                                                     console.log(guess);
                                                     guessid = ((document.getElementById(guess).childNodes)[3]).getAttribute('id');
@@ -94,6 +95,7 @@
                 <p class="entete">Espèce</p>
                 <p class="entete">Océan d'origine</p>
                 <p class="entete">Style de combat</p>
+                <p class="entete">Age</p>
            </div>
            <hr class="hrr">
            <div id="guesslist">

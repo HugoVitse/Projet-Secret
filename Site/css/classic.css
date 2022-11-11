@@ -207,7 +207,7 @@ p{
 
 .tryguess{
     position: relative;
-    width: 846px;
+    width: 940px;
     height: 100px;
     z-index: 2;
     left: 50%;
@@ -252,7 +252,7 @@ p{
 
 .foreheade{
     position: relative;
-    width: 846px;
+    width: 940px;
     height: 60px;
     z-index: 2;
     left: 50%;
@@ -261,7 +261,7 @@ p{
 }
 .foreheadopa{
     position: relative;
-    width: 846px;
+    width: 940px;
     height: 60px;
     z-index: 2;
     left: 50%;
@@ -311,7 +311,7 @@ p{
 .sucessd{
     display:none;
     position:relative;
-    width:23%;
+    width:300px;
     left:50%;
     transform:translateX(-50%);
     z-index:2;
@@ -323,7 +323,7 @@ p{
 
 .sucessap{
     position:relative;
-    width:23%;
+    width:300px;
     left:50%;
     transform:translateX(-50%);
     z-index:2;
@@ -361,6 +361,7 @@ p{
     display:block;
     text-align: center;
     float:left;
+    clear:right;
     margin: 10px;
     color:white;
 }
@@ -370,6 +371,7 @@ p{
     text-align: center;
     font-weight:bold;
     color:white;
+    float:left;
 }
 
 #nextin{
@@ -390,6 +392,7 @@ p{
 #lobby img{
     width:100%;
     transition:filter 0.5s;
+    border-radius: 5px;
 }
 
 #lobby{

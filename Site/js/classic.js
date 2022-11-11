@@ -33,6 +33,62 @@ function refreshgues(){
 
 
 }
+inp.addEventListener("keydown", display);
+document.querySelector("#button").addEventListener("click",()=>{
+    if(actualchild==-1)actualchild=0;
+    text = inp.value;
+    let firstletter=0;
+    if(text.length == 0) firstletter = 0;
+    else firstletter = (text[0]).charCodeAt();
+    if(firstletter!=0){
+        if(isstarted == false){
+            isstarted = true;
+            document.querySelector("#forhead").classList.add("foreheadopa");
+            document.querySelector("#forhead").classList.remove("foreheade");
+            document.querySelector("hr").classList.add("hrrOpa");
+            document.querySelector("hr").classList.remove("hrr");
+            
+        }
+        newid = "#letter" + (firstletter-97);
+        newdisplay = document.querySelector(newid);
+
+        var children = newdisplay.childNodes;
+        if(actualchild==0){
+            for(var i=0; i< children.length -1;i++){
+                    
+                if(children[i].classList.contains("persobox")) {
+                    guess = children[i].getAttribute("id");
+                    guessid = ((document.getElementById(guess).childNodes)[3]).getAttribute("id");
+                    inp.value="";
+                    newdisplay.classList.remove("alphabeticalopa");
+                    newdisplay.classList.add("alphabetical");
+                    actualchild=-1;
+                    (children[i]).classList.remove("persobox");
+                    (children[i]).classList.add("persoboxtr");
+                    makeAguess(guessid);
+                    break;
+                
+                }
+            }
+        }
+        else{
+            guess = children[actualchild].getAttribute("id");
+            guessid = ((document.getElementById(guess).childNodes)[3]).getAttribute("id");
+            inp.value="";
+            newdisplay.classList.remove("alphabeticalopa");
+            newdisplay.classList.add("alphabetical");
+            
+            (children[actualchild]).classList.remove("persobox");
+            (children[actualchild]).classList.add("persoboxtr");
+            actualchild=-1;
+        
+            makeAguess(guessid);
+        }
+    }
+
+
+});
+
 if(typeof(tabgues)!="undefined"){
     isstarted = true;
     document.querySelector("#forhead").classList.add("foreheadopa");
@@ -52,7 +108,7 @@ if(typeof(tabgues)!="undefined"){
         
     }
 }
-inp.addEventListener("keydown", display);
+
 
 function acttimer(){
     var dateexp = (   Date.now() -  ((Date.now())%(24*60*60*1000))  + 24*60*60*1000 );
@@ -99,9 +155,9 @@ function makeAguess(){
             newDiv.classList.add("tryguess");
             let newC = document.createElement("div");
             newC.classList.add("essai");
-            newC.setAttribute("style","background-image: url(images/"+tmp[19]+");");
+            newC.setAttribute("style","background-image: url(images/"+tmp[22]+");");
             newDiv.appendChild(newC);
-            for(var i=0; i< 8;i++){
+            for(var i=0; i< 9;i++){
                 let newC = document.createElement("div");
                 if(tmp[2*i+4] == 1) newC.setAttribute("style","background-color:green");
                 if(tmp[2*i+4] == 2) newC.setAttribute("style","background-color:orange");
@@ -129,11 +185,12 @@ function makeAguess(){
                 document.querySelector("#sucess").classList.remove("sucessd");
                 document.querySelector("#sucess").classList.add("sucessap");
                 document.querySelector("#nameguess").textContent = tmp[3];
-                document.querySelector("#imgfel").setAttribute("src",tmp[19]);
+                document.querySelector("#imgfel").setAttribute("src","images/"+tmp[22]);
+                document.querySelector("#guess").setAttribute("style","top:45%;");
                 if(refreshing==false){
                     setTimeout(()=>{
                         document.querySelector("#sucess").scrollIntoView({ behavior: 'smooth'});
-                    },4900);
+                    },5600);
                     
                 }
 
@@ -161,43 +218,69 @@ function display(e){
             while(listchildr[actualchild+k].classList.contains("persoboxtr")){
                 if(k+1 < listchildr.length) k++;
             } 
-
+            actualchild+=k;
+            ((listchildr[actualchild].childNodes)[7]).classList.add("paraselect");
+            ((listchildr[actualchild].childNodes)[7]).classList.remove("paraguess");
         }
         else{
-            if(actualchild < listchildr.length-2){
+            var l = 0;
+            for(var t=0; t<listchildr.length-2;t++){
+                if(listchildr[t].classList.contains("persoboxtr"))l= t;
+            }
+
+
+            if(actualchild < t){
                 ((listchildr[actualchild].childNodes)[7]).classList.remove("paraselect");
                 ((listchildr[actualchild].childNodes)[7]).classList.add("paraguess");
+                while((listchildr[actualchild+k].classList.contains("persoboxtr"))){
+                    if(actualchild+k+1 < t) k++;
+                }
+                actualchild+=k;
+                ((listchildr[actualchild].childNodes)[7]).classList.add("paraselect");
+                ((listchildr[actualchild].childNodes)[7]).classList.remove("paraguess");
+                
             }
-            while(listchildr[actualchild+k].classList.contains("persoboxtr")){
-                if(k+1 < listchildr.length) k++;
-            }
+
+            
         }
         
-        actualchild+=k;
-        ((listchildr[actualchild].childNodes)[7]).classList.add("paraselect");
-        ((listchildr[actualchild].childNodes)[7]).classList.remove("paraguess");
+        
     }
     else{
         if(e.code=="ArrowUp"){
             listchildr = newdisplay.childNodes;
             let k = 1;
             if(actualchild!=-1){
-                if(actualchild > 0){
+                var l = 0;
+                console.log(listchildr.length);
+
+                while(listchildr[l].classList.contains("persoboxtr")) l++;
+                /*
+                for(var t=0; t<listchildr.length-2;t++){
+                    if(listchildr[t].classList.contains("persoboxtr"))l= t;
+                }*/
+                console.log(l);
+                if(actualchild > l){
                     ((listchildr[actualchild].childNodes)[7]).classList.remove("paraselect");
                     ((listchildr[actualchild].childNodes)[7]).classList.add("paraguess");
+                    while(listchildr[actualchild-k].classList.contains("persoboxtr")){
+                        if(k-1 > l) k--;
+                    }
+                    actualchild-=k;
+                    ((listchildr[actualchild].childNodes)[7]).classList.add("paraselect");
+                    ((listchildr[actualchild].childNodes)[7]).classList.remove("paraguess");
                 }
-                while(listchildr[actualchild-k].classList.contains("persoboxtr")){
-                    if(k-1 > 0) k--;
-                }
+               
+                
+                
             }
+         
             
             
-            actualchild-=k;
-            ((listchildr[actualchild].childNodes)[7]).classList.add("paraselect");
-            ((listchildr[actualchild].childNodes)[7]).classList.remove("paraguess");
+            
         }
         else{
-            if(e.code == "Enter"){
+            if(e.code == "Enter" || e.code == "NumpadEnter"){
                 if(actualchild==-1)actualchild=0;
                 text = inp.value;
                 let firstletter=0;
@@ -239,9 +322,10 @@ function display(e){
                         inp.value="";
                         newdisplay.classList.remove("alphabeticalopa");
                         newdisplay.classList.add("alphabetical");
-                        actualchild=-1;
+                        
                         (children[actualchild]).classList.remove("persobox");
                         (children[actualchild]).classList.add("persoboxtr");
+                        actualchild=-1;
                     
                         makeAguess(guessid);
                     }
