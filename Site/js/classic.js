@@ -137,7 +137,7 @@ function makeAguess(){
     listtry[count] = guessid;
     count++;
     if(refreshing==false){
-        var dateexp = new Date((((Date.now())-(Date.now())%(24*60*60*1000))+24*60*60*1000));
+        var dateexp = new Date((((Date.now())-(Date.now())%(24*60*60*1000))+24*60*60*1000)-1000*60*60);
         if(document.cookie.length==0) document.cookie = "guesses="+guessid+"a;expires="+dateexp;
         else document.cookie = "guesses="+getCookie("guesses")+guessid+"a;expires="+dateexp;
     }
