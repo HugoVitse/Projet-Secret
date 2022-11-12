@@ -14,6 +14,8 @@ var refreshing = false;
 var incr=0;
 var inter=0;
 
+
+
 function elementPosition (a) {
     var b = a.getBoundingClientRect();
     return (b.y || b.top);
@@ -63,6 +65,7 @@ document.querySelector("#button").addEventListener("click",()=>{
                     newdisplay.classList.remove("alphabeticalopa");
                     newdisplay.classList.add("alphabetical");
                     actualchild=-1;
+                    newdisplay.scrollTop =0;
                     (children[i]).classList.remove("persobox");
                     (children[i]).classList.add("persoboxtr");
                     makeAguess(guessid);
@@ -81,6 +84,7 @@ document.querySelector("#button").addEventListener("click",()=>{
             (children[actualchild]).classList.remove("persobox");
             (children[actualchild]).classList.add("persoboxtr");
             actualchild=-1;
+            newdisplay.scrollTop =0;
         
             makeAguess(guessid);
         }
@@ -156,6 +160,7 @@ function makeAguess(){
             let newC = document.createElement("div");
             newC.classList.add("essai");
             newC.setAttribute("style","background-image: url(images/"+tmp[22]+");");
+            newC.classList.add("imgessai");
             newDiv.appendChild(newC);
             for(var i=0; i< 9;i++){
                 let newC = document.createElement("div");
@@ -213,6 +218,12 @@ function makeAguess(){
 function display(e){
     if(e.code=="ArrowDown"){
         listchildr = newdisplay.childNodes;
+        if(actualchild-5 >=0){
+            console.log("ok");
+            newdisplay.scrollTop = (actualchild-4)*44;
+            console.log(newdisplay.scrollTop);
+        }
+        
         let k = 1;
         if(actualchild==-1){
             while(listchildr[actualchild+k].classList.contains("persoboxtr")){
@@ -223,17 +234,18 @@ function display(e){
             ((listchildr[actualchild].childNodes)[7]).classList.remove("paraguess");
         }
         else{
-            var l = 0;
-            for(var t=0; t<listchildr.length-2;t++){
-                if(listchildr[t].classList.contains("persoboxtr"))l= t;
-            }
+            var l = listchildr.length -2;
+            while(l>=0 && listchildr[l].classList.contains("persoboxtr")) l--;
+         
 
 
-            if(actualchild < t){
+            if(actualchild < l){
                 ((listchildr[actualchild].childNodes)[7]).classList.remove("paraselect");
                 ((listchildr[actualchild].childNodes)[7]).classList.add("paraguess");
+                console.log(l);
                 while((listchildr[actualchild+k].classList.contains("persoboxtr"))){
-                    if(actualchild+k+1 < t) k++;
+                    console.log(actualchild)
+                    if(actualchild+k+1 <= l) k++;
                 }
                 actualchild+=k;
                 ((listchildr[actualchild].childNodes)[7]).classList.add("paraselect");
@@ -250,6 +262,11 @@ function display(e){
         if(e.code=="ArrowUp"){
             listchildr = newdisplay.childNodes;
             let k = 1;
+            if(actualchild+5 < listchildr.length){
+                console.log("ok");
+                newdisplay.scrollTop = (actualchild-1)*44;
+                console.log(newdisplay.scrollTop);
+            }
             if(actualchild!=-1){
                 var l = 0;
                 console.log(listchildr.length);
@@ -261,10 +278,13 @@ function display(e){
                 }*/
                 console.log(l);
                 if(actualchild > l){
+                    console.log("ok");
                     ((listchildr[actualchild].childNodes)[7]).classList.remove("paraselect");
                     ((listchildr[actualchild].childNodes)[7]).classList.add("paraguess");
                     while(listchildr[actualchild-k].classList.contains("persoboxtr")){
-                        if(k-1 > l) k--;
+                        console.log(k);
+                        if(actualchild-k-1 >= l) k++;
+                        console.log(k);
                     }
                     actualchild-=k;
                     ((listchildr[actualchild].childNodes)[7]).classList.add("paraselect");
@@ -309,6 +329,7 @@ function display(e){
                                 newdisplay.classList.remove("alphabeticalopa");
                                 newdisplay.classList.add("alphabetical");
                                 actualchild=-1;
+                                newdisplay.scrollTop =0;
                                 (children[i]).classList.remove("persobox");
                                 (children[i]).classList.add("persoboxtr");
                                 makeAguess(guessid);
@@ -326,6 +347,7 @@ function display(e){
                         (children[actualchild]).classList.remove("persobox");
                         (children[actualchild]).classList.add("persoboxtr");
                         actualchild=-1;
+                        newdisplay.scrollTop =0;
                     
                         makeAguess(guessid);
                     }
@@ -345,6 +367,7 @@ function display(e){
                             newdisplay.classList.remove("alphabeticalopa");
                             newdisplay.classList.add("alphabetical");
                             actualchild=-1;
+                            newdisplay.scrollTop =0;
                         }
                     }
                     else{
@@ -390,4 +413,36 @@ function display(e){
         }
     }
 }
+
+
+
+inp.addEventListener('focusout', ()=>{
+    if((newdisplay)!=""){
+        setTimeout( ()=>{
+            newdisplay.classList.remove("alphabeticalopa");
+            newdisplay.classList.add("alphabetical");
+            actualchild=-1;
+            newdisplay.scrollTop =0;
+            inp.value="";
+        },50);
+        
+    }
+});
+
+document.querySelector("#infos").addEventListener("click",()=>{
+    document.querySelector("#informations").classList.add("infoss");
+    document.querySelector("#informations").classList.remove("infossd");
+});
+
+
+document.addEventListener("mouseup",function(event){
+    var obj = document.getElementById("informations");
+    if ( !obj.contains(event.target) ) {
+        document.querySelector("#informations").classList.add("infossd");
+        document.querySelector("#informations").classList.remove("infoss");
+
+    }
+
+});
+
 

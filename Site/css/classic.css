@@ -153,6 +153,12 @@ p{
     position: absolute;
     top: 74px;
     opacity:0;
+    display:none;
+}
+
+.alphabeticalopa:hover{
+    box-shadow: 3px 3px 6px black;
+    transition : box-shadow 0.3s;
 }
 
 .alphabeticalopa{
@@ -164,6 +170,9 @@ p{
     opacity:1;
     z-index:5;
     border-radius: 0 0 10px 10px;
+    overflow:auto;
+    transition : box-shadow 0.3s;
+    scroll-behavior: smooth;
 }
 
 .persobox{
@@ -182,6 +191,7 @@ p{
     transform: translate(3%,-50%);
     color:red;
     transition : color 0.3s;
+    width:97%;
 }
 .persobox>img{
     border-radius:4px;
@@ -196,6 +206,18 @@ p{
     transform: translate(3%,-50%);
     color:white;
     transition : color 0.3s;
+    width:97%;
+}
+
+.paraguess:hover{
+    display: block;
+    top: 50%;
+    position: relative;
+    transform: translate(3%,-50%);
+    color:red;
+    transition : color 0.3s;
+    width:97%;
+
 }
 
 .persoboxtr{
@@ -226,6 +248,10 @@ p{
     transform: rotate3d(0,1,0,0deg);
     transition: transform 0.5s,opacity 0.5s;
     opacity:1;
+}
+
+.essai:not(.imgessai):hover{
+    filter:brightness(1.2);
 }
 
 .essaipreflip{
@@ -291,9 +317,9 @@ p{
 
 .hrrOpa{
     position: relative;
-    z-index: 3;
+    z-index: 2;
     color: white;
-    width:846px;
+    width:940px;
     opacity:1;
 }
 
@@ -311,7 +337,7 @@ p{
 .sucessd{
     display:none;
     position:relative;
-    width:300px;
+    width:400px;
     left:50%;
     transform:translateX(-50%);
     z-index:2;
@@ -323,7 +349,7 @@ p{
 
 .sucessap{
     position:relative;
-    width:300px;
+    width:400px;
     left:50%;
     transform:translateX(-50%);
     z-index:2;
@@ -367,11 +393,12 @@ p{
 }
 
 #nameguess{
-    font-size:150%;
+    font-size: 150%;
     text-align: center;
-    font-weight:bold;
-    color:white;
-    float:left;
+    font-weight: bold;
+    color: white;
+    width: 68%;
+    float: left;
 }
 
 #nextin{
@@ -408,3 +435,119 @@ p{
     filter:blur(4px);
     transition:filter 0.5s;
 }
+
+.infoss{
+    height: 45%;
+    width: 500px;
+    position: fixed;
+    border: 2px solid black;
+    background:linear-gradient(#1f1f1f,#373737);
+    color: white;
+    z-index: 4;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    opacity:1;
+    transition: opacity 0.2s, top 0.2s;
+
+}
+
+.infossd{
+    height: 45%;
+    width: 500px;
+    position: fixed;
+    border: 2px solid black;
+    background:linear-gradient(#1f1f1f,#373737);
+    color: white;
+    z-index: 0;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    top: 70%;
+    opacity:0;
+    transition: z-index 0.3s,opacity 0.2s, top 0.2s;
+
+
+}
+
+
+#green,#red,#orange{
+    position: relative;
+    height: 27%;
+    width: 100%;
+    margin-top: 5%;
+    font-family: ubuntu;
+}
+
+#colorcode{
+    position:absolute;
+    font-family:ubuntu;
+    text-align: center;
+    left: 50%;
+    transform: translate(-50% ,25%);
+}
+#green > div{
+    width: 40px;
+    height: 40px;
+    background-color: green;
+    float: left;
+    top: 50%;
+    position: relative;
+    transform: translateY(-50%);
+    margin-left: 15px;
+}
+
+#red > div{
+    width:40px;
+    height:40px;
+    background-color: red;
+    float: left;
+    top: 50%;
+    position: relative;
+    transform: translateY(-50%);
+    margin-left: 15px;
+}
+
+#orange > div{
+    width:40px;
+    height:40px;
+    background-color: orange;
+    float: left;
+    top: 50%;
+    position: relative;
+    transform: translateY(-50%);
+    margin-left: 15px;
+}
+
+#orange>p{
+    width: 415px;
+    text-align: center;
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 55px;
+    margin: 0 15px;
+}
+
+#red>p{
+    width: 415px;
+    text-align: center;
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 55px;
+    margin: 0 15px;
+}
+
+#green>p{
+    width: 415px;
+    text-align: center;
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 55px;
+    margin: 0 15px;
+}
+

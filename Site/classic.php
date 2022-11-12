@@ -23,6 +23,25 @@
 
 
     <body>
+
+        <div class="infossd" id="informations">
+            <p id="colorcode"> Légende des couleurs </p>
+            <div id="green">
+                <div></div>
+                <p>Information correcte</p>
+            </div>
+
+            <div id="orange">
+                <div></div>
+                <p>Information partiellement correcte. NB : La case du fruit du démon apparait en orange si le personnage en possède un mais qu'il est du mauvais type. La case age s'affiche en orange si le personnage est dans une tranche d'age de 10 ans autour de la bonne réponse.</p>
+            </div>
+
+            <div id="red">
+                <div></div>
+                <p>Information incorrecte</p>
+            </div>
+        </div>
+
         <img id="background" src="images/bg.png">
         <a href="index.php" id="logo"><img  src="images/logo.png"></a>
         <div id="indications">
@@ -46,7 +65,7 @@
                                 foreach($allnames as $cle=>$val){
                                     if((strtolower($val))[0] == chr($i+97)){
                                         echo "<div class='persobox' id='$actname $cle'>
-                                                <script> document.getElementById('$actname $cle').addEventListener('click', ()=>{
+                                                <script> document.getElementById('$actname $cle').addEventListener('mousedown', ()=>{
                                                     if(isstarted == false){
                                                         isstarted = true;
                                                         document.querySelector('#forhead').classList.add('foreheadopa');
@@ -69,6 +88,7 @@
 
 
                                             </div>";
+                                            break;
                                     }
                                 }
                             }
@@ -103,7 +123,7 @@
             <div class="sucessd" id="sucess">
                 <p id="msgfel"> Bien joué ! </p>
                 <img src="images/luffy.png" id="imgfel">
-                <p id="youguess"> Vous avez trouvé : </p>
+                <p id="youguess"> Vous avez trouvé :&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </p>
                 <p id="nameguess">Monkey D. Luffy </p>
                 <p id="nextin"> Prochain perso dans </p>
                 <p id="timer"></p>
