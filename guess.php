@@ -19,11 +19,10 @@
         foreach($ligne as $cle => $val){
             echo $val.":";
             if($cle=="age"){
-                
                     if($val == $ligne2["age"]) echo"1:";
                     else{
-                        if($val!="Décédé"){
-                            if( ($ligne2["age"]>$val-5) && ($ligne2["age"]<$val+5) ) echo"2:";
+                        if($val != "Décédé"){
+                            if( ( (int)$ligne2["age"] > (int)$val-5) || ((int)$ligne2["age"]<(int)$val+5) ) echo"2:";
                             else echo"3:";
                         }
                     }
