@@ -1,4 +1,14 @@
 <?php
+$today = date("Y-m-d");
+if(!isset($_COOKIE["lastday"])) setcookie("lastday",$today,time()+170002800);
+else{
+    if(($_COOKIE["lastday"])!= $today){
+        if(!isset($_COOKIE["guesses"]))setcookie("guesses","",time()+170002800);
+        else setcookie("guesses","");
+        setcookie("lastday",$today);
+        header("Location:classic.php");
+    }
+}
 $requete = "SELECT nom FROM persos";
 $other = "SELECT * FROM dailyid WHERE id=1";
 $result = mysqli_query($connexion,$requete);

@@ -141,9 +141,9 @@ function makeAguess(){
     listtry[count] = guessid;
     count++;
     if(refreshing==false){
-        var dateexp = new Date((((Date.now())-(Date.now())%(24*60*60*1000))+24*60*60*1000)-1000*60*60);
-        if(document.cookie.length==0) document.cookie = "guesses="+guessid+"a;expires="+dateexp;
-        else document.cookie = "guesses="+getCookie("guesses")+guessid+"a;expires="+dateexp;
+        var dateexp = new Date( (Date.now()) +172800);
+        if(document.cookie.length==0) document.cookie = "guesses="+guessid+"a;expires=Thu, 31 Dec 2099 23:59:59 GMT";
+        else document.cookie = "guesses="+getCookie("guesses")+guessid+"a;expires=Thu, 31 Dec 2099 23:59:59 GMT";
     }
     console.log(guess);
     var data ="id="+guessid;
@@ -159,6 +159,7 @@ function makeAguess(){
             newDiv.classList.add("tryguess");
             let newC = document.createElement("div");
             newC.classList.add("essai");
+			console.log(tmp);
             newC.setAttribute("style","background-image: url(images/"+tmp[22]+");");
             newC.classList.add("imgessai");
             newDiv.appendChild(newC);

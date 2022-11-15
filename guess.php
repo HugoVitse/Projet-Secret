@@ -22,7 +22,7 @@
                     if($val == $ligne2["age"]) echo"1:";
                     else{
                         if($val != "Décédé"){
-                            if( ( (int)$ligne2["age"] > (int)$val-5) || ((int)$ligne2["age"]<(int)$val+5) ) echo"2:";
+                            if( ( (int)$ligne2["age"] > (int)$val-5) && ((int)$ligne2["age"]<(int)$val+5) ) echo"2:";
                             else echo"3:";
                         }
                     }
