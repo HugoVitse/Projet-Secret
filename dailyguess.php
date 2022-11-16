@@ -4,8 +4,8 @@ if(!isset($_COOKIE["lastday"])) setcookie("lastday",$today,time()+170002800);
 else{
     if(($_COOKIE["lastday"])!= $today){
         if(!isset($_COOKIE["guesses"]))setcookie("guesses","",time()+170002800);
-        else setcookie("guesses","");
-        setcookie("lastday",$today);
+        else setcookie("guesses","",time()+170002800);
+        setcookie("lastday",$today,time()+170002800);
         header("Location:classic.php");
     }
 }
