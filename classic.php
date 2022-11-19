@@ -19,6 +19,7 @@
 
     <head>
         <link rel="stylesheet" href="css/classic.css">
+        <title> Onedle </title>
     </head>
 
 

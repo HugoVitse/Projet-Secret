@@ -1,0 +1,292 @@
+@font-face {
+    font-family: 'ubuntu';
+    src: url(Ubuntu-Regular.ttf) format('woff2');
+}
+
+p{
+    margin:0;
+}
+
+body{
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    position:absolute;
+    overflow-x: hidden;
+}
+
+#background{
+    width:100%;
+    z-index:1;
+    position:fixed;
+}
+
+#logo{
+    position:relative;
+    margin-top:2%;
+    display:block;
+    z-index:2;
+    width:25%;
+    left:50%;
+    transform:translateX(-50%);
+    transition:transform 0.5s;
+}
+#logo img{
+    width:100%;
+}
+#indications{
+    margin-top:2%;
+    width:300px;
+    height:54px;
+    background-color: rgb(38, 38, 38);
+    position:relative;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:2;
+    border:2px solid rgb(163, 142, 22);
+    border-radius:5px;
+    font-size:15px;
+    text-align:center;
+    font-family:"ubuntu";
+    color:#fff;
+}
+#wanted img:not(#imgpost){
+    height:100%;
+}
+#wanted{
+    margin-top:1%;
+    position:relative;
+    height:534px;
+    left:50%;
+    z-index:2;
+    width: fit-content;
+    background-color: #d2c197;
+    border: 2px solid #ff2d2b;
+    transition : border 0.5s;
+}
+
+
+#bounty,#name{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-family: times new roman;
+    color: #2c291f;
+
+}
+
+#name{
+    top: 70%;
+    width: 200%;
+    font-weight: bolder;
+    font-size: 60px;
+    transform: translateX(-50%) scaleX(0.5);
+}
+
+#bounty{
+    top: 82%;
+    width: 100%;
+    font-weight: normal;
+    font-size: 40px;
+    transition: color 0.5s;
+}
+
+ #imgpost{
+    /*background-image: url("../images/luffy.png");*/
+    position: absolute;
+    height: 40%;
+    top: 21.5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 56%;
+    background-size: contain;
+    box-shadow: 0 0 5px 6px #d2c197 inset;
+ }
+
+
+.arrow{
+    height:534px;
+    width:fit-content;
+    position:absolute;
+    z-index:2;
+    margin-top:1%;
+    filter: brightness(0.4);
+    transition:filter 0.2s, left 0.5s, right 0.5s;
+}
+
+.arrowdisl{
+    height:534px;
+    width:fit-content;
+    position:absolute;
+    z-index:2;
+    margin-top:1%;
+    transition:filter 0.2s, left 0.5s, right 0.5s;
+    left:-1000px;
+}
+.arrowdisr{
+    height:534px;
+    width:fit-content;
+    position:absolute;
+    z-index:2;
+    margin-top:1%;
+    transition:filter 0.2s, left 0.5s, right 0.5s;
+    right:-1000px;
+}
+.arrowbright{
+    height:534px;
+    width:fit-content;
+    position:absolute;
+    z-index:2;
+    margin-top:1%;
+    filter: brightness(1);
+    transition:filter 0.2s;
+}
+
+
+
+#actualguess{
+    bottom:0;
+    width: 30%;
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    transform: translate(-50%,-20px);
+    text-align: center;
+    font-family: times new roman;
+    background-color: #d2c197;
+    border-radius: 5px;
+    border: 2px solid #ff2d2b;
+}
+
+#i1{
+    font-size: 20px;
+}
+
+#i2{
+    font-size: 35px;
+    float: left;
+    display: block;
+    position: relative;
+}
+
+
+#montant{
+    height:100%;
+    width: fit-content;
+    left: 50%;
+    position: relative;
+    transform: translateX(-50%);
+}
+
+.sucessd{
+    display:none;
+    position:relative;
+    width:400px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:2;
+    background:linear-gradient(#16793d,#1e2328);
+    border:2px solid green;
+    margin-top: 100px;
+    border-radius: 5px;
+}
+
+.sucessap{
+    position:relative;
+    width:400px;
+    left:50%;
+    transform:translate(-50%,-50%);
+    z-index:2;
+    background:linear-gradient(#16793d,#1e2328);
+    border:2px solid green;
+    margin-top: 400px;
+    border-radius: 5px;
+}
+#nextgame{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    color:black;
+    font-size:150%;
+    font-weight:ubuntu;
+}
+#sucess p{
+    font-family: ubuntu;
+}
+
+#msgfel{
+    margin:10px;
+    color:white;
+    text-align:center;
+}
+#imgfel{
+    width: 25%;
+    float: left;
+    margin: 10px;
+    border-radius:6px;
+}
+
+#youguess{
+    display:block;
+    text-align: center;
+    float:left;
+    clear:right;
+    margin: 10px;
+    color:white;
+}
+
+#nameguess{
+    font-size: 150%;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    width: 68%;
+    float: left;
+}
+
+#nextin{
+    clear: left;
+    text-align: center;
+    color:white;
+    margin-top: 30px;
+}
+
+#timer{
+    font-size:150%;
+    text-align: center;
+    margin-top: 30px;
+    color:white;
+
+}
+
+
+#lobby img{
+    width:100%;
+    transition:filter 0.5s;
+    border-radius: 5px;
+}
+
+#lobby{
+    width: 65%;
+    display: block;
+    left: 50%;
+    position: relative;
+    transform: translateX(-50%);
+    margin: 10px;
+}
+
+#lobby:hover img{
+    filter:blur(4px);
+    transition:filter 0.5s;
+}
+
+#indications p{
+    font-family:ubuntu;
+    width:100%;
+    position:absolute;
+    z-index:3;
+    top:50%;
+    transform:translateY(-50%);
+}

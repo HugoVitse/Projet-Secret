@@ -15,11 +15,11 @@
             <img src="images/classic.png">
             <p class="namegame"> Devinez le personnage </p>
         </a>
-        <a class="gamemode" id="quote" href="bounty.php">
+        <a class="gamemode" id="quote" href="quote.php">
             <img  src="images/quote.png">
             <p class="namegame"> Devinez l'auteur de la citation </p>
         </a>
-        <a class="gamemode" id="bounty" href="quote.php">
+        <a class="gamemode" id="bounty" href="bounty.php">
             <img  src="images/bounty.png">
             <p class="namegame"> Devinez la prime </p>
         </a>
