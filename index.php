@@ -1,7 +1,7 @@
 <html>
 
 
-
+    <?php if(!(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')) header("Location:https://onedle.rf.gd/classic.php");?>
     <head>
         <link rel="stylesheet" href="css/index.css">
     </head>

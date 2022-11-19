@@ -1,5 +1,6 @@
 <html>
     <?php
+        //if(!(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')) header("Location:https://onedle.rf.gd/classic.php");
         include "connexion.php";
         include "dailyguess.php";
         $requete = "SELECT * From persos";
