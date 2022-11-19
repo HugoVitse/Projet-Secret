@@ -149,3 +149,13 @@ document.querySelector("html").addEventListener("keydown", (e)=>{
     }
 
 })
+
+if(typeof(cook) != undefined){
+    console.log("ok");
+    bounty = cook;
+    for(var i=0; i< bounty.length;i++){
+        if(bounty[i]!=".")bountyint+=bounty[i];
+    }
+    bountyint = Number(bountyint);
+    makeAguess();
+}

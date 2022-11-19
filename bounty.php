@@ -1,6 +1,10 @@
 <html>
     <?php
         //if(!(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')) header("Location:https://onedle.rf.gd/bounty.php");
+        if(isset($_COOKIE["guessesb"])) {
+            $vart = $_COOKIE["guessesb"];
+            echo "<script> var cook = $vart </script>";
+        }
         include "connexion.php";
         include "dailyguess.php";
         $requete = "SELECT bountyid From dailyid";
