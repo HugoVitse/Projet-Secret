@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : sam. 19 nov. 2022 à 13:48
+-- Généré le : Dim 20 nov. 2022 à 23:01
 -- Version du serveur :  5.7.24
--- Version de PHP : 8.0.1
+-- Version de PHP : 7.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,7 +41,7 @@ CREATE TABLE `dailyid` (
 --
 
 INSERT INTO `dailyid` (`classicid`, `bountyid`, `quoteid`, `splashid`, `id`, `lastupdate`) VALUES
-(89, 2, 0, 0, 1, '2022-11-19');
+(20, 16, 0, 8, 1, '2022-11-20');
 
 -- --------------------------------------------------------
 
@@ -188,7 +188,122 @@ CREATE TABLE `persosprime` (
 
 INSERT INTO `persosprime` (`id`, `name`, `bounty`, `image`) VALUES
 (1, 'MONKEY D. LUFFY', 3000000000, 'luffy.png'),
-(2, 'KING', 1390000000, 'king.png');
+(2, 'KING', 1390000000, 'king.png'),
+(3, 'GOL D. ROGER', 5564800000, 'roger.png'),
+(4, 'EDWARD NEWGATE', 5046000000, 'newgate.png'),
+(5, 'KAIDO', 4611100000, 'kaido.png'),
+(6, 'CHARLOTTE LINLIN', 4388000000, 'bigMom.png'),
+(7, 'SHANKS', 4048900000, 'shanks.png'),
+(8, 'MARSHALL D. TEACH', 3996000000, 'teach.png'),
+(9, 'DRACULE MIHAWK', 3590000000, 'mihawk.png'),
+(10, 'BAGGY', 3189000000, 'baggy.png'),
+(11, 'EUSTASS KID', 3000000000, 'kid.png'),
+(12, 'TRAFALGAR LAW', 3000000000, 'law.png'),
+(13, 'CROCODILE', 1965000000, 'crocodile.png'),
+(14, 'BOA HANCOCK', 1659000000, 'hancock.png'),
+(15, 'MARCO', 1374000000, 'marco.png'),
+(16, 'QUEEN', 1320000000, 'queen.png'),
+(17, 'JINBE', 1100000000, 'jimbei.png'),
+(18, 'CHARLOTTE KATAKURI', 1057000000, 'katakuri.png'),
+(19, 'VINSMOKE SANJI', 1032000000, 'sanji.png'),
+(20, 'JACK', 1000000000, 'jack.png'),
+(21, 'CHARLOTTE SMOOTHIE', 932000000, 'smoothie.png'),
+(22, 'NICO ROBIN', 930000000, 'robin.png'),
+(23, 'CHARLOTTE PEROSPERO', 700000000, 'perospero.png'),
+(24, 'SABO', 602000000, 'sabo.png'),
+(25, 'CHARLOTTE SNACK', 600000000, 'snack.png'),
+(26, 'LITTLE OARS JR.', 550000000, 'oz.png'),
+(27, 'PORTGAS D. ACE', 550000000, 'ace.png'),
+(28, 'WHO\'S WHO', 546000000, 'whoswho.png'),
+(29, 'CHINJAO', 542000000, 'chinjao.png'),
+(30, 'IZOU', 510000000, 'izou.png'),
+(31, 'GOD USOPP', 500000000, 'usopp.png'),
+(32, 'BLACK MARIA', 480000000, 'blackmaria.png'),
+(33, 'SASAKI', 472000000, 'sasaki.png'),
+(34, 'BELO BETTY', 457000000, 'belobetty.png'),
+(35, 'TAMAGO', 429000000, 'tamago.png'),
+(36, 'KARASU', 400000000, 'karasu.png'),
+(37, 'ULTI', 400000000, 'ulti.png'),
+(38, 'FRANKY', 394000000, 'franky.png'),
+(39, 'BROOK', 383000000, 'brook.png'),
+(40, 'PEDRO', 382000000, 'pedro.png'),
+(41, 'NAMI', 366000000, 'nami.png'),
+(42, 'CAPONE BEGE', 350000000, 'bege.png'),
+(43, 'SCRATCHMEN APOO', 350000000, 'apoo.png'),
+(44, 'DON QUICHOTTE DOFLAMINGO', 340000000, 'doflamingo.png'),
+(45, 'PEKOMS', 330000000, 'pekoms.png'),
+(46, 'CAVENDISH', 330000000, 'cavendish.png'),
+(47, 'JEWERLY BONNEY', 320000000, 'bonney.png'),
+(48, 'BASIL HAWKINS', 320000000, 'moria.png'),
+(49, 'LINDBERGH', 316000000, 'lindbergh.png'),
+(50, 'CESAR CLOWN', 300000000, 'cesar.png'),
+(51, 'CHARLOTTE DAIFUKU', 300000000, 'daifuku.png'),
+(52, 'CHHARLOTTE OVEN', 300000000, 'oven.png'),
+(53, 'MORLEY', 293000000, 'morley.png'),
+(54, 'PAGE ONE', 290000000, 'pageone.png'),
+(55, 'FISHER TIGER', 230000000, 'fishertiger.png'),
+(56, 'X DRAKE', 220000000, 'drake.png'),
+(57, 'CARIBOU', 210000000, 'caribou.png'),
+(58, 'SQUARDO', 210000000, 'squardo.png'),
+(59, 'SAI', 210000000, 'sai.png'),
+(60, 'KILLER', 200000000, 'killer.png'),
+(61, 'BARTOLOMEO', 200000000, 'bartolomeo.png'),
+(62, 'BELLAMY', 195000000, 'bellamy.png'),
+(63, 'CORIBOU', 190000000, 'coribou.png'),
+(64, 'ORLUMBUS', 148000000, 'orlumbus.png'),
+(65, 'CHARLOTTE MONT D\'OR', 120000000, 'montdor.png'),
+(66, 'UROUGE', 108000000, 'urouge.png'),
+(67, 'BOBBIN', 105000000, 'bobbin.png'),
+(68, 'DORRY', 100000000, 'dorry.png'),
+(69, 'BROGY', 100000000, 'brogy.png'),
+(70, 'DIAMANTE', 99000000, 'diamante.png'),
+(71, 'PICA', 99000000, 'pica.png'),
+(72, 'TREBOL', 99000000, 'trebol.png'),
+(73, 'VITO', 95000000, 'vito.png'),
+(74, 'ROCKSTAR', 94000000, 'rockstar.png'),
+(75, 'ALBION', 92000000, 'albion.png'),
+(76, 'GOTTI', 90000000, 'gotti.png'),
+(77, 'LIP DOUGHTY', 88000000, 'doughty.png'),
+(78, 'BARBE ROUSSE', 80060000, 'barberousse.png'),
+(79, 'NICO OLVIA', 79000000, 'olvia.png'),
+(80, 'MR 1', 75000000, 'mr1.png'),
+(81, 'SULEIMAN', 67000000, 'suleiman.png'),
+(82, 'LAO G', 61000000, 'laog.png'),
+(83, 'SENOR PINK', 58000000, 'senorpink.png'),
+(84, 'BARBE ROSE', 52000000, 'barberose.png'),
+(85, 'SHOJO', 36000000, 'shojo.png'),
+(86, 'MISS DOUBLEFINGER', 35000000, 'doublefinger.png'),
+(87, 'BONCLAY', 32000000, 'bonclay.png'),
+(88, 'GLADIUS', 31000000, 'gladius.png'),
+(89, 'MISS GOLDENWEEK', 29000000, 'goldenweek.png'),
+(90, 'DEMALO BLACK', 26000000, 'demaloblack.png'),
+(91, 'MONT BLANC CRICKET', 25000000, 'cricket.png'),
+(92, 'FOXY', 24000000, 'foxy.png'),
+(93, 'MR 3', 24000000, 'mr3.png'),
+(94, 'CHARLOTTE LOLA', 24000000, 'laura.png'),
+(95, 'MASIRA', 23000000, 'masira.png'),
+(96, 'SCOTCH', 20000000, 'scotch.png'),
+(97, 'ROCK', 20000000, 'rock.png'),
+(98, 'ARLONG', 20000000, 'arlong.png'),
+(99, 'DON KRIEG', 17000000, 'donkrieg.png'),
+(100, 'CAPTAIN KURO', 16000000, 'kuro.png'),
+(101, 'DELLINGER', 15000000, 'dellinger.png'),
+(102, 'BLUEJAM', 14300000, 'bluejam.png'),
+(103, 'MISS MERRYCHRISTMAS', 14000000, 'merrychristmas.png'),
+(104, 'GIN', 12000000, 'gin.png'),
+(105, 'MACHVISE', 11000000, 'machvise.png'),
+(106, 'MR 5', 10000000, 'mr5.png'),
+(107, 'DJANGO', 9000000, 'django.png'),
+(108, 'HIGUMA', 8000000, 'higuma.png'),
+(109, 'OCTY', 8000000, 'octy.png'),
+(110, 'CURLY DADAN', 7800000, 'dadan.png'),
+(111, 'MISS VALENTINE', 7500000, 'valentine.png'),
+(112, 'SHAM', 7000000, 'sham.png'),
+(113, 'BUCHI', 7000000, 'buchi.png'),
+(114, 'ALVIDA', 5000000, 'alvida.png'),
+(115, 'MR 4', 3200000, 'mr4.png'),
+(116, 'TONY TONY CHOPPER', 1000, 'chopper.png'),
+(117, 'BEPO', 500, 'bepo.png');
 
 --
 -- Index pour les tables déchargées
@@ -232,7 +347,7 @@ ALTER TABLE `persos`
 -- AUTO_INCREMENT pour la table `persosprime`
 --
 ALTER TABLE `persosprime`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
