@@ -4,6 +4,8 @@ if(!isset($_COOKIE["lastday"])) setcookie("lastday",$today,time()+170002800);
 else{
     if(($_COOKIE["lastday"])!= $today){
         setcookie("guesses","",time()+170002800);
+        setcookie("guessesp","",time()+170002800);
+        setcookie("guessesb","",time()+170002800);
         setcookie("lastday",$today,time()+170002800);
         header("Location:classic.php");
     }
@@ -22,9 +24,12 @@ $today = date("Y-m-d");
 if($today != $row['lastupdate']){
     $newint = rand(1,$size);
     $newint2 = rand(1,$size2);
-    $newrequete = "UPDATE dailyid SET bountyid = $newint2, classicid = $newint, lastupdate = '$today' WHERE id=1";
+    $newint3 = rand(1,$size);
+    $newrequete = "UPDATE dailyid SET splashid = $newint3, bountyid = $newint2, classicid = $newint, lastupdate = '$today' WHERE id=1";
     mysqli_query($connexion,$newrequete);
 }
+
+
 
 
 

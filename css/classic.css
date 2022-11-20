@@ -351,11 +351,11 @@ p{
     position:relative;
     width:400px;
     left:50%;
-    transform:translateX(-50%);
+    transform:translate(-50%,-50%);
     z-index:2;
     background:linear-gradient(#16793d,#1e2328);
     border:2px solid green;
-    margin-top: 100px;
+    margin-top: 400px;
     border-radius: 5px;
 }
 #nextgame{

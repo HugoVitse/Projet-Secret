@@ -149,8 +149,9 @@ document.querySelector("html").addEventListener("keydown", (e)=>{
     }
 
 })
+console.log(typeof(cook));
+if(typeof(cook) != "undefined"){
 
-if(typeof(cook) != undefined){
     console.log("ok");
     bounty = cook;
     for(var i=0; i< bounty.length;i++){

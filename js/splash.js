@@ -13,106 +13,7 @@ var actualchild = -1;
 var refreshing = false;
 var incr=0;
 var inter=0;
-
-
-
-function elementPosition (a) {
-    var b = a.getBoundingClientRect();
-    return (b.y || b.top);
- }
-
-function refreshgues(){
-    if(incr == tabgues.length-1) clearInterval(inter);
-    else{
-        console.log(incr);
-        guessid=tabgues[incr]
-        console.log(guessid);
-        makeAguess();
-        incr+=1;
-    }
-
-    
-
-
-}
-inp.addEventListener("keydown", display);
-document.querySelector("#button").addEventListener("click",()=>{
-    if(actualchild==-1)actualchild=0;
-    text = inp.value;
-    let firstletter=0;
-    if(text.length == 0) firstletter = 0;
-    else firstletter = (text[0]).charCodeAt();
-    if(firstletter!=0){
-        if(isstarted == false){
-            isstarted = true;
-            document.querySelector("#forhead").classList.add("foreheadopa");
-            document.querySelector("#forhead").classList.remove("foreheade");
-            document.querySelector("hr").classList.add("hrrOpa");
-            document.querySelector("hr").classList.remove("hrr");
-            
-        }
-        newid = "#letter" + (firstletter-97);
-        newdisplay = document.querySelector(newid);
-
-        var children = newdisplay.childNodes;
-        if(actualchild==0){
-            for(var i=0; i< children.length -1;i++){
-                    
-                if(children[i].classList.contains("persobox")) {
-                    guess = children[i].getAttribute("id");
-                    guessid = ((document.getElementById(guess).childNodes)[3]).getAttribute("id");
-                    inp.value="";
-                    newdisplay.classList.remove("alphabeticalopa");
-                    newdisplay.classList.add("alphabetical");
-                    actualchild=-1;
-                    newdisplay.scrollTop =0;
-                    (children[i]).classList.remove("persobox");
-                    (children[i]).classList.add("persoboxtr");
-                    makeAguess(guessid);
-                    break;
-                
-                }
-            }
-        }
-        else{
-            guess = children[actualchild].getAttribute("id");
-            guessid = ((document.getElementById(guess).childNodes)[3]).getAttribute("id");
-            inp.value="";
-            newdisplay.classList.remove("alphabeticalopa");
-            newdisplay.classList.add("alphabetical");
-            
-            (children[actualchild]).classList.remove("persobox");
-            (children[actualchild]).classList.add("persoboxtr");
-            actualchild=-1;
-            newdisplay.scrollTop =0;
-        
-            makeAguess(guessid);
-        }
-    }
-
-
-});
-
-if(typeof(tabgues)!="undefined"){
-    isstarted = true;
-    document.querySelector("#forhead").classList.add("foreheadopa");
-    document.querySelector("#forhead").classList.remove("foreheade");
-    document.querySelector("hr").classList.add("hrrOpa");
-    document.querySelector("hr").classList.remove("hrr");
-    if(tabgues.length >1){
-        refreshing=true;
-        console.log(tabgues[incr]);
-
-        inter = setInterval(refreshgues,100);
-
-        setTimeout(()=>{
-            refreshing=false;
-            document.querySelector("#sucess").scrollIntoView({ behavior: 'smooth'});
-        },(tabgues.length+2)*100);
-        
-    }
-}
-
+var countguess=1;
 
 function acttimer(){
     var dateexp = (   Date.now() -  ((Date.now())%(24*60*60*1000))  + 24*60*60*1000 );
@@ -121,6 +22,33 @@ function acttimer(){
 
 
 }
+function refreshgues(){
+    if(incr == tabgues.length-1) clearInterval(inter);
+    else{
+        guessid=tabgues[incr]
+        guess = document.getElementById(guessid).parentElement.getAttribute("id");
+        makeAguess();
+        incr+=1;
+    }
+
+    
+
+
+}
+setTimeout( ()=>{
+    window.onload = change; 
+},10);
+
+function change(){
+    console.log(countguess);
+    var canvas = document.getElementById("splashart");
+    var context = canvas.getContext("2d");
+    var img = document.createElement("img");
+    img.setAttribute("src","images/"+tss+".png");
+    context.drawImage(img, 0, 0, (1-(countguess*0.02))*1920,(1-(countguess*0.02))*1080);
+}
+
+window.onload = change; 
 function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
@@ -136,14 +64,18 @@ function getCookie(cname) {
     }
     return "";
 }
+
+
+
+
 function makeAguess(){
     console.log(guessid);
     listtry[count] = guessid;
     count++;
     if(refreshing==false){
         var dateexp = new Date( (Date.now()) +172800);
-        if(document.cookie.length==0) document.cookie = "guesses="+guessid+"a;expires=Thu, 31 Dec 2099 23:59:59 GMT";
-        else document.cookie = "guesses="+getCookie("guesses")+guessid+"a;expires=Thu, 31 Dec 2099 23:59:59 GMT";
+        if(document.cookie.length==0) document.cookie = "guessesp="+guessid+"a;expires=Thu, 31 Dec 2099 23:59:59 GMT";
+        else document.cookie = "guessesp="+getCookie("guessesp")+guessid+"a;expires=Thu, 31 Dec 2099 23:59:59 GMT";
     }
     console.log(guess);
     var data ="id="+guessid;
@@ -151,70 +83,76 @@ function makeAguess(){
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
         // Typical action to be performed when the document is ready:
-            var tmp = xhttp.responseText.split(":");
-            console.log(xhttp.responseText);
+            var tmp = xhttp.responseText;
             console.log(tmp);
-            var newDiv = document.createElement("div");
-            divguess.prepend(newDiv);
-            newDiv.classList.add("tryguess");
-            let newC = document.createElement("div");
-            newC.classList.add("essai");
-			console.log(tmp);
-            newC.setAttribute("style","background-image: url(images/"+tmp[22]+");");
-            newC.classList.add("imgessai");
-            newDiv.appendChild(newC);
-            for(var i=0; i< 9;i++){
+            if(tmp =="false"){
+                countguess++;
+                if(countguess <= 40){
+                    console.log("prout");
+                    change();
+                }
                 let newC = document.createElement("div");
-                if(tmp[2*i+4] == 1) newC.setAttribute("style","background-color:green");
-                if(tmp[2*i+4] == 2) newC.setAttribute("style","background-color:orange");
-                if(tmp[2*i+4] == 3) newC.setAttribute("style","background-color:red");
-                if(refreshing == false)newC.classList.add("essaipreflip");
-                let newP = document.createElement("p");
-                let newContent = document.createTextNode(tmp[2*i+3]);
-                newP.appendChild(newContent);
-                newC.appendChild(newP);
-                newDiv.appendChild(newC);
-                if(refreshing == false){
-                    setTimeout(()=>{
-                        newC.classList.remove("essaipreflip");
-                        newC.classList.add("essai");
-                    },700*i);
-                }
-                else{
-                    newC.classList.add("essai");
-                }
-                
+                newC.classList.add("guesstry");
+                let newImg = document.createElement("img");
+                newImg.setAttribute("src", ((document.getElementById(guess).childNodes)[5]).getAttribute("src"));
+                newC.appendChild(newImg);
+                let NewP = document.createElement("p");
+                let newContent = document.createTextNode(((document.getElementById(guess).childNodes)[7]).textContent);
+                NewP.appendChild(newContent);
+                newC.appendChild(NewP);
+                document.querySelector("#guesslist").prepend(newC);
             }
-            if(tmp[0]=="true"){
+            if(tmp=="true"){
+                let newC = document.createElement("div");
+                newC.classList.add("guesstrysuc");
+                let newImg = document.createElement("img");
+                newImg.setAttribute("src", ((document.getElementById(guess).childNodes)[5]).getAttribute("src"));
+                newC.appendChild(newImg);
+                let NewP = document.createElement("p");
+                let newContent = document.createTextNode(((document.getElementById(guess).childNodes)[7]).textContent);
+                NewP.appendChild(newContent);
+                newC.appendChild(NewP);
+                document.querySelector("#guesslist").prepend(newC);
+
                 document.querySelector("#searchbar").classList.remove("searchbarOK");
                 document.querySelector("#searchbar").classList.add("searchbarPAS");
                 document.querySelector("#sucess").classList.remove("sucessd");
                 document.querySelector("#sucess").classList.add("sucessap");
-                document.querySelector("#nameguess").textContent = tmp[3];
-                document.querySelector("#imgfel").setAttribute("src","images/"+tmp[22]);
-                document.querySelector("#guess").setAttribute("style","top:45%;");
+                document.querySelector("#nameguess").textContent = ((document.getElementById(guess).childNodes)[7]).textContent;
+                document.querySelector("#imgfel").setAttribute("src",((document.getElementById(guess).childNodes)[5]).getAttribute("src"));
                 if(refreshing==false){
                     setTimeout(()=>{
                         document.querySelector("#sucess").scrollIntoView({ behavior: 'smooth'});
-                    },5600);
+                    },200);
                     
                 }
 
 
                 setInterval(acttimer,1000);
-                
+
             }
-            
+        };
+        
 
-
-        }
-    };
-    xhttp.open("POST", "guess.php", true);
+    }
+    xhttp.open("POST", "guesssplash.php", true);
     xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     xhttp.send(data);
-
 }
 
+if(typeof(tabgues)!="undefined"){
+    if(tabgues.length >1){
+        refreshing=true;
+
+        inter = setInterval(refreshgues,100);
+
+        setTimeout(()=>{
+            refreshing=false;
+            document.querySelector("#sucess").scrollIntoView({ behavior: 'smooth'});
+        },(tabgues.length+2)*100);
+        
+    }
+}
 
 function display(e){
     if(e.code=="ArrowDown"){
@@ -308,14 +246,7 @@ function display(e){
                 if(text.length == 0) firstletter = 0;
                 else firstletter = (text[0]).charCodeAt();
                 if(firstletter!=0){
-                    if(isstarted == false){
-                        isstarted = true;
-                        document.querySelector("#forhead").classList.add("foreheadopa");
-                        document.querySelector("#forhead").classList.remove("foreheade");
-                        document.querySelector("hr").classList.add("hrrOpa");
-                        document.querySelector("hr").classList.remove("hrr");
-            
-                    }
+                    
                     newid = "#letter" + (firstletter-97);
                     newdisplay = document.querySelector(newid);
 
@@ -416,7 +347,7 @@ function display(e){
     }
 }
 
-
+inp.addEventListener("keydown", display);
 
 inp.addEventListener('focusout', ()=>{
     if((newdisplay)!=""){
@@ -430,21 +361,3 @@ inp.addEventListener('focusout', ()=>{
         
     }
 });
-
-document.querySelector("#infos").addEventListener("click",()=>{
-    document.querySelector("#informations").classList.add("infoss");
-    document.querySelector("#informations").classList.remove("infossd");
-});
-
-
-document.addEventListener("mouseup",function(event){
-    var obj = document.getElementById("informations");
-    if ( !obj.contains(event.target) ) {
-        document.querySelector("#informations").classList.add("infossd");
-        document.querySelector("#informations").classList.remove("infoss");
-
-    }
-
-});
-
-

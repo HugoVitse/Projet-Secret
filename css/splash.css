@@ -1,0 +1,358 @@
+@font-face {
+    font-family: 'ubuntu';
+    src: url(Ubuntu-Regular.ttf) format('woff2');
+}
+
+p{
+    margin:0;
+}
+
+body{
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    position:absolute;
+    overflow-x: hidden;
+}
+
+#background{
+    width:100%;
+    z-index:1;
+    position:fixed;
+}
+
+#logo{
+    position:relative;
+    margin-top:2%;
+    display:block;
+    z-index:2;
+    width:25%;
+    left:50%;
+    transform:translateX(-50%);
+    transition:transform 0.5s;
+}
+#logo img{
+    width:100%;
+}
+#indications{
+    margin-top:2%;
+    width:300px;
+    height:54px;
+    background-color: rgb(38, 38, 38);
+    position:relative;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:2;
+    border:2px solid rgb(163, 142, 22);
+    border-radius:5px;
+    font-size:15px;
+    text-align:center;
+    font-family:"ubuntu";
+    color:#fff;
+}
+
+#indications p{
+    font-family:ubuntu;
+    width:100%;
+    position:absolute;
+    z-index:3;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+
+.searchbarOK{
+    height: 74px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    border-radius: 5px;
+    margin-top: 2%;
+    width: 384px;
+}
+
+.searchbarPAS{
+    height: 74px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    border-radius: 5px;
+    margin-top: 2%;
+    width: 384px;
+    display:none;
+
+}
+
+
+
+#searchbar img{
+    float:left;
+}
+
+.alphabetical{
+    background-color:#383838;
+    max-height: 350%;
+    width: 318px;
+    position: absolute;
+    top: 74px;
+    opacity:0;
+    display:none;
+}
+
+.alphabeticalopa:hover{
+    box-shadow: 3px 3px 6px black;
+    transition : box-shadow 0.3s;
+}
+
+.alphabeticalopa{
+    max-height: 350%;
+    width: 318px;
+    position: absolute;
+    background-color:#383838;
+    top: 74px;
+    opacity:1;
+    z-index:5;
+    border-radius: 0 0 10px 10px;
+    overflow:auto;
+    transition : box-shadow 0.3s;
+    scroll-behavior: smooth;
+}
+
+.persobox{
+    height: 44px;
+    width: 100%;
+    background-color:#383838;
+    font-family:ubuntu;
+    cursor:pointer;
+    border-radius: 0 0 10px 10px;
+}
+
+.paraselect{
+    display: block;
+    top: 50%;
+    position: relative;
+    transform: translate(3%,-50%);
+    color:red;
+    transition : color 0.3s;
+    width:97%;
+}
+.persobox>img{
+    border-radius:4px;
+    height: 36px;
+    margin: 4px;
+}
+
+.paraguess{
+    display: block;
+    top: 50%;
+    position: relative;
+    transform: translate(3%,-50%);
+    color:white;
+    transition : color 0.3s;
+    width:97%;
+}
+
+.paraguess:hover{
+    display: block;
+    top: 50%;
+    position: relative;
+    transform: translate(3%,-50%);
+    color:red;
+    transition : color 0.3s;
+    width:97%;
+
+}
+
+.persoboxtr{
+    height: 44px;
+    width: 100%;
+    background-color:#383838;
+    display:none;
+}
+
+#saisie{
+    position:absolute;
+    left:0;
+    height:90%;
+    width:70%;
+    background-color:transparent;
+    border:none;
+    font-size:200%;
+    color:white;
+    font-family:"ubuntu";
+    margin:1% 3%;
+}
+#saisie:focus-visible{
+    outline:none;
+}
+
+#cadre{
+    position: relative;
+    z-index: 2;
+    width: 384px;
+    margin-top: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 384px;
+    border: 2px solid #a38e16;
+    border-radius: 5px;
+    overflow:hidden;
+}
+
+
+.guesstry{
+    height: 70px;
+    position: relative;
+    z-index: 2;
+    background-color: #ff0037;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 270px;
+    border-radius: 3px;
+    border: 2px solid #d1062a;
+    margin-top: 15px;
+}
+
+.guesstrysuc{
+    height: 70px;
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(#16793d,#0d3011);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 270px;
+    border-radius: 3px;
+    border: 2px solid rgb(0, 72, 0);
+    margin-top: 15px;
+}
+
+
+.guesstry>img, .guesstrysuc>img{
+    height: 90%;
+    float: left;
+    top: 50%;
+    position: absolute;
+    transform: translateY(-50%);
+    border-radius: 3px;
+}
+
+.guesstry>p,.guesstrysuc>p{
+    float: left;
+    font-family: ubuntu;
+    display: block;
+    top: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: white;
+}
+
+#guesslist{
+    margin: 40px 0;
+}
+
+
+.sucessd{
+    display:none;
+    position:relative;
+    width:400px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:2;
+    background:linear-gradient(#16793d,#1e2328);
+    border:2px solid green;
+    margin-top: 100px;
+    border-radius: 5px;
+}
+
+.sucessap{
+    position:relative;
+    width:400px;
+    left:50%;
+    transform:translate(-50%,-50%);
+    z-index:2;
+    background:linear-gradient(#16793d,#1e2328);
+    border:2px solid green;
+    margin-top: 400px;
+    border-radius: 5px;
+}
+
+#nextgame{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    color:black;
+    font-size:150%;
+    font-weight:ubuntu;
+}
+#sucess p{
+    font-family: ubuntu;
+}
+
+#msgfel{
+    margin:10px;
+    color:white;
+    text-align:center;
+}
+#imgfel{
+    width: 25%;
+    float: left;
+    margin: 10px;
+    border-radius:6px;
+}
+
+#youguess{
+    display:block;
+    text-align: center;
+    float:left;
+    clear:right;
+    margin: 10px;
+    color:white;
+}
+
+#nameguess{
+    font-size: 150%;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    width: 68%;
+    float: left;
+}
+
+#nextin{
+    clear: left;
+    text-align: center;
+    color:white;
+    margin-top: 30px;
+}
+
+#timer{
+    font-size:150%;
+    text-align: center;
+    margin-top: 30px;
+    color:white;
+
+}
+
+#lobby img{
+    width:100%;
+    transition:filter 0.5s;
+    border-radius: 5px;
+}
+
+#lobby{
+    width: 65%;
+    display: block;
+    left: 50%;
+    position: relative;
+    transform: translateX(-50%);
+    margin: 10px;
+}
+
+#lobby:hover img{
+    filter:blur(4px);
+    transition:filter 0.5s;
+}
