@@ -24,6 +24,7 @@
     <head>
         <link rel="stylesheet" href="css/splash.css">
         <title> Onedle </title>
+        <link rel="icon" type="image/x-icon" href="images/fav.ico">
     </head>
 
     <body>

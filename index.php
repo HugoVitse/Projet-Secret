@@ -4,6 +4,8 @@
     <?php //if(!(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')) header("Location:https://onedle.rf.gd/index.php");?>
     <head>
         <link rel="stylesheet" href="css/index.css">
+        <link rel="icon" type="image/x-icon" href="images/fav.ico">
+        <title> Onedle </title>
     </head>
 
 
