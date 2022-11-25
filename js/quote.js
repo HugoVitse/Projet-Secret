@@ -25,7 +25,7 @@ function acttimer(){
 function refreshgues(){
     if(incr == tabgues.length-1) clearInterval(inter);
     else{
-        guessid=tabgues[incr]
+        guessid=tabgues[incr];
         guess = document.getElementById(guessid).parentElement.getAttribute("id");
         makeAguess();
         incr+=1;
@@ -36,17 +36,6 @@ function refreshgues(){
 
 }
 
-
-
-function change(){
-    var canvas = document.getElementById("splashart");
-    var context = canvas.getContext("2d");
-    var img = document.createElement("img");
-    img.setAttribute("src","images/"+tss+".png");
-    setTimeout(()=>{
-        context.drawImage(img, 0, 0, (1-(countguess*0.02))*1920,(1-(countguess*0.02))*1080);
-    },100);
-}
 
 
 function getCookie(cname) {
@@ -74,8 +63,8 @@ function makeAguess(){
     count++;
     if(refreshing==false){
         var dateexp = new Date( (Date.now()) +172800);
-        if(document.cookie.length==0) document.cookie = "guessesp="+guessid+"a;expires=Thu, 31 Dec 2099 23:59:59 GMT";
-        else document.cookie = "guessesp="+getCookie("guessesp")+guessid+"a;expires=Thu, 31 Dec 2099 23:59:59 GMT";
+        if(document.cookie.length==0) document.cookie = "guessesq="+guessid+"a;expires=Thu, 31 Dec 2099 23:59:59 GMT";
+        else document.cookie = "guessesq="+getCookie("guessesq")+guessid+"a;expires=Thu, 31 Dec 2099 23:59:59 GMT";
     }
     console.log(guess);
     var data ="id="+guessid;
@@ -87,10 +76,6 @@ function makeAguess(){
             console.log(tmp);
             if(tmp =="false"){
                 countguess++;
-                if(countguess <= 40){
-                    console.log("prout");
-                    change();
-                }
                 let newC = document.createElement("div");
                 newC.classList.add("guesstry");
                 let newImg = document.createElement("img");
@@ -105,7 +90,7 @@ function makeAguess(){
             }
             if(tmp=="true"){
                 var imgsuc = document.createElement("img");
-                imgsuc.setAttribute("src","images/"+tss+".png");
+                imgsuc.setAttribute("src","images/"+tss);
                 imgsuc.setAttribute("id","imgsucc");
                 document.querySelector("#nextin").insertAdjacentElement('beforebegin',imgsuc);
                 let newC = document.createElement("div");
@@ -140,7 +125,7 @@ function makeAguess(){
         
 
     }
-    xhttp.open("POST", "guesssplash.php", true);
+    xhttp.open("POST", "guessquote.php", true);
     xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     xhttp.send(data);
 }
@@ -368,6 +353,3 @@ inp.addEventListener('focusout', ()=>{
 });
 
 
-setTimeout( ()=>{
-    change();
-},100);

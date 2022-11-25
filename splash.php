@@ -110,7 +110,7 @@
             <p id="timer"></p>
             <a id="lobby" href="classic.php">
                 <img src="images/classic.png">
-                <p id="nextgame"> Citation </p>
+                <p id="nextgame"> Classique </p>
             </a>
 
         </div>

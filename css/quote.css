@@ -195,10 +195,14 @@ body{
     margin-top: 2%;
     left: 50%;
     transform: translateX(-50%);
-    height: 384px;
+    height: 175px;
     border: 2px solid #a38e16;
     border-radius: 5px;
     overflow:hidden;
+    color: white;
+    font-family: "ubuntu";
+    background-color: #262626;
+    text-align: center;
 }
 
 
@@ -364,4 +368,11 @@ body{
     transform: translate(-50%);
     border: 2px solid #a38e16;
     border-radius: 5px;
+}
+
+#quoteguess{
+    display: block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
