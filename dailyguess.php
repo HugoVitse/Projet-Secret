@@ -25,7 +25,8 @@ if($today != $row['lastupdate']){
     $newint = rand(1,$size);
     $newint2 = rand(1,$size2);
     $newint3 = rand(1,$size);
-    $newrequete = "UPDATE dailyid SET splashid = $newint3, bountyid = $newint2, classicid = $newint, lastupdate = '$today' WHERE id=1";
+    $newint4 = rand(1,$size);
+    $newrequete = "UPDATE dailyid SET quoteid = $newint4 splashid = $newint3, bountyid = $newint2, classicid = $newint, lastupdate = '$today' WHERE id=1";
     mysqli_query($connexion,$newrequete);
 }
 
