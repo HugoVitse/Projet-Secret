@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:3306
--- Généré le : ven. 25 nov. 2022 à 23:29
--- Version du serveur :  5.7.24
--- Version de PHP : 7.4.16
+-- Hôte : sql210.epizy.com
+-- Généré le :  ven. 09 déc. 2022 à 18:14
+-- Version du serveur :  10.3.27-MariaDB
+-- Version de PHP :  7.2.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `db`
+-- Base de données :  `epiz_32988969_db`
 --
 
 -- --------------------------------------------------------
@@ -41,7 +42,7 @@ CREATE TABLE `dailyid` (
 --
 
 INSERT INTO `dailyid` (`classicid`, `bountyid`, `quoteid`, `splashid`, `id`, `lastupdate`) VALUES
-(65, 110, 1, 6, 1, '2022-11-25');
+(31, 85, 57, 52, 1, '2022-12-10');
 
 -- --------------------------------------------------------
 
@@ -59,7 +60,7 @@ CREATE TABLE `persos` (
   `espece` text NOT NULL,
   `ocean` text NOT NULL,
   `style` text NOT NULL,
-  `age` text,
+  `age` text DEFAULT NULL,
   `image` text NOT NULL,
   `quote` text NOT NULL,
   `quoteimg` text NOT NULL
@@ -151,7 +152,7 @@ INSERT INTO `persos` (`id`, `nom`, `fdd`, `haki`, `genre`, `occupation`, `espece
 (79, 'Fisher Tiger', 'Aucun', 'Armement Observation', 'Homme', 'Pirate', 'Homme-Poisson', 'Grand Line', 'Combat au corps à corps', 'Décédé', 'tiger.png', '', ''),
 (80, 'Neptune', 'Aucun', 'Aucun', 'Homme', 'Famille Royale', 'Homme-Poisson', 'Grand Line', 'Arme Contondante', '70 ans', 'neptune.png', '', ''),
 (81, 'Shirahoshi', 'Aucun', 'Aucun', 'Femme', 'Famille Royale', 'Homme-Poisson', 'Grand Line', '?', '16 ans', 'shirahoshi.png', '', ''),
-(82, 'Nefertari Cobra', 'Aucun', 'Aucun', 'Homme', 'Famille Royale', 'Humain', 'Grand Line', '?', 'Décédé', '50 ans', '', ''),
+(82, 'Nefertari Cobra', 'Aucun', 'Aucun', 'Homme', 'Famille Royale', 'Humain', 'Grand Line', '?', 'Décédé', 'cobra.png', '', ''),
 (83, 'Nefertari Vivi', 'Aucun', 'Aucun', 'Femme', 'Famille Royale', 'Humain', 'Grand Line', '?', '18 ans', 'vivi.png', '', ''),
 (84, 'Riku Doldo III', 'Aucun', 'Aucun', 'Homme', 'Famille Royale', 'Homme', 'Grand Line', 'Epéiste', '60 ans', 'riku.png', '', ''),
 (85, 'Rebecca', 'Aucun', 'Aucun', 'Femme', 'Famille Royale', 'Humain', 'Grand Line', 'Epéiste', '16 ans', 'rebecca.png', '', ''),
