@@ -142,8 +142,14 @@ function makeAguess(){
     count++;
     if(refreshing==false){
         var dateexp = new Date( (Date.now()) +172800);
+        var tab = getCookie("guesses").split("a");
+        var isIn = tab.includes(guessid);
         if(document.cookie.length==0) document.cookie = "guesses="+guessid+"a;expires=Thu, 31 Dec 2099 23:59:59 GMT";
-        else document.cookie = "guesses="+getCookie("guesses")+guessid+"a;expires=Thu, 31 Dec 2099 23:59:59 GMT";
+        else {
+            if(isIn == false){
+                document.cookie = "guesses="+getCookie("guesses")+guessid+"a;expires=Thu, 31 Dec 2099 23:59:59 GMT";
+            }
+        }
     }
     console.log(guess);
     var data ="id="+guessid;

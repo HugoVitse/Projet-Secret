@@ -43,9 +43,16 @@ function change(){
     var context = canvas.getContext("2d");
     var img = document.createElement("img");
     img.setAttribute("src","images/"+tss+".png");
-    setTimeout(()=>{
-        context.drawImage(img, 0, 0, (1-(countguess*0.02))*1920,(1-(countguess*0.02))*1080);
-    },100);
+    if(countguess<=30){
+        setTimeout(()=>{
+            context.drawImage(img, 0, 0, (1-(countguess*0.02))*1920,(1-(countguess*0.02))*1080);
+        },100);
+    }
+    else{
+        setTimeout(()=>{
+            context.drawImage(img, 0, 0, (1-(30*0.02))*1920,(1-(30*0.02))*1080);
+        },100);
+    }
 }
 
 
@@ -74,9 +81,16 @@ function makeAguess(){
     count++;
     if(refreshing==false){
         var dateexp = new Date( (Date.now()) +172800);
+        var tab = getCookie("guessesp").split("a");
+        var isIn = tab.includes(guessid);
         if(document.cookie.length==0) document.cookie = "guessesp="+guessid+"a;expires=Thu, 31 Dec 2099 23:59:59 GMT";
-        else document.cookie = "guessesp="+getCookie("guessesp")+guessid+"a;expires=Thu, 31 Dec 2099 23:59:59 GMT";
-    }
+        else {
+            if(isIn == false) {
+                document.cookie = "guessesp="+getCookie("guessesp")+guessid+"a;expires=Thu, 31 Dec 2099 23:59:59 GMT";
+            }
+        }
+    }   
+    
     console.log(guess);
     var data ="id="+guessid;
     var xhttp = new XMLHttpRequest();
